@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2022 at 10:01 AM
+-- Generation Time: Jun 08, 2022 at 06:13 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.5
 
@@ -184,6 +184,15 @@ CREATE TABLE `psmuser` (
   `psm_snum` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `psmuser`
+--
+
+INSERT INTO `psmuser` (`psm_id`, `userID`, `psm_type`, `psm_sid`, `psm_snum`) VALUES
+(1, 'CB19107', 'std', '202122', '1'),
+(2, 'CB19111', 'std', '202122', '2'),
+(3, 'CB19102', 'lec', '202122', '1');
+
 -- --------------------------------------------------------
 
 --
@@ -325,7 +334,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `user_type`, `password`, `name`, `userID`, `phone`, `email`, `remember_token`, `created_at`, `updated_at`) VALUES
 (16, 'Student', 'abc123', 'Safwan', 'CB19107', '0192217361', 'safwan99@gmail.com', NULL, '2022-06-07 03:14:05', '2022-06-07 03:14:05'),
 (17, 'Coordinator', 'abc123', 'Fakhirah', 'fakhirah123', '01753715471', 'fakhira123@gmail.com', NULL, '2022-06-07 04:07:39', '2022-06-07 04:07:39'),
-(18, 'Coordinator', 'abc123', 'Darwish Mat Zain', 'CB19102', '0179024771', 'cb19102@student.ump.edu.my', '', NULL, NULL);
+(18, 'Coordinator', 'abc123', 'Darwish Mat Zain', 'CB19102', '0179024771', 'cb19102@student.ump.edu.my', '', NULL, NULL),
+(19, 'Student', 'abc123', 'Hidari Kazumi', 'CB19111', '0179897788', 'CB19111', NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -367,6 +377,7 @@ ALTER TABLE `personal_access_tokens`
 -- Indexes for table `psmuser`
 --
 ALTER TABLE `psmuser`
+  ADD PRIMARY KEY (`psm_id`),
   ADD KEY `userID` (`userID`);
 
 --
@@ -418,6 +429,12 @@ ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `psmuser`
+--
+ALTER TABLE `psmuser`
+  MODIFY `psm_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
@@ -433,7 +450,7 @@ ALTER TABLE `supervisors`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Constraints for dumped tables
