@@ -53,10 +53,10 @@ $roles = session()->get('user_type');
     </tr>
      @endforeach
 		</table><br>
-    <button><a href="AddReport" >Add Student Progress<class="nav-link  @if(url()->current() ===  URL::to('/AddReport'))
+    <a href="AddReport" class="btn btn-success">Add Student Progress<class="nav-link  @if(url()->current() ===  URL::to('/AddReport'))
 	active
     @endif">
-		</a></button></center>
+		</a></center>
   <!-- /.content -->
 
 </div>

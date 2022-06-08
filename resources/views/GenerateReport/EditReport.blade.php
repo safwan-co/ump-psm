@@ -89,14 +89,14 @@
 					<label for="Description">Description:</label>
 					</td>
 					<td>
-					<input type="text" class="form-control" name="Description" id="description" value="{{ $student[0]->Description }}"> 
+					<input type="text" class="form-control" name="Description" id="description" value="{{ $student[0]->Description }}" style="width: 300px; height:150px;"> 
 					</td>
 					</p>
 				</td>
 				</tr>
 			</table>
 				<br>
-			<input type="submit" name="Submit" id="Submit" value="Save" method="post">
+			<input class="btn btn-success" type="submit" name="Submit" id="Submit" value="Save" method="post">
 			</p>
 			</form>
 		</fieldset>

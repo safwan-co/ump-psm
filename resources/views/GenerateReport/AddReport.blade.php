@@ -49,7 +49,7 @@ $roles = session()->get('user_type');
 					<label for=id>Report ID:</label>
 					</td>
 					<td>
-					<input type="text" name="id">
+					<input type="text" name="id" placeholder="Student ID_No">
 					</td>
 					</p>
 				</td>
@@ -104,11 +104,11 @@ $roles = session()->get('user_type');
 				</tr>
 			</table>
 			<br>
-			<input type="submit" name="Submit" id="Submit" value="Submit" method="post">
-			<button><a href="ViewReport" >View Report<class="nav-link  @if(url()->current() ===  URL::to('/ViewReport'))
+			<input type="submit" class="btn btn-success" name="Submit" id="Submit" value="Submit" method="post">
+			<a href="ViewReport" class="btn btn-success">View Report<class="nav-link  @if(url()->current() ===  URL::to('/ViewReport'))
 		active
 		@endif">
-		</a></button>
+		</a>
 			</p>
 			</form>
 		</fieldset>
