@@ -128,16 +128,20 @@ use App\Http\Controllers\ScheduleController;
 //Route::get('viewSchedule', [ScheduleController::class, 'viewSchedule']);//
 //Route::get('viewStd','ScheduleController@indexStudent');
 //Route::get('viewCoo','ScheduleController@indexCoordinator');
-Route::get('viewStdSchedule', function(){return view('Schedule/viewStdSchedule');});
-Route::get('viewSupSchedule', function(){return view('Schedule/viewSupSchedule');});
-Route::get('viewCooSchedule', function(){return view('Schedule/viewCooSchedule');},'ScheduleController@indexCoordinator');
+Route::get('viewStdSchedule', 'ScheduleController@indexStudent');//student
+Route::get('viewSupSchedule');//supervisor
+Route::get('viewCooSchedule', 'ScheduleController@indexCoordinator');//coordinator
+//Route::get('viewCooSchedule', function(){return view('Schedule/viewCooSchedule');});
+//Route::post('indexCoordinator()');
+
 Route::get('Schedule', function(){
     $logged_user = session()->get('logged_user');
     $user_type = session()->get('user_type');
     if ($user_type == 'Student') {return redirect('viewStdSchedule');}
     elseif ($user_type == 'Supervisor') {return redirect('viewSupSchedule');}
-    elseif ($user_type == 'Coordinator') {return redirect('Schedule/viewCooSchedule');}
-});
+    elseif ($user_type == 'Coordinator') {return redirect('viewCooSchedule');}
+}
+);
 //Route::get('viewCooSchedule','ScheduleController@indexCoordinator');
 
 /*Route::get('getSchedule', function () {

@@ -70,26 +70,6 @@ table.center{
     </table>
     @endforeach
     @endif
-    @if($roles == 'Coordinator')
-      <table class="table">
-        <tr>
-        <td>PSM ID</td>
-        <td>ID</td>
-        <td>Type</td>
-        <td>Schedule ID</td>
-        <td>Session</td>
-        </tr>
-        @foreach ($psmuser as $user)
-        <tr>
-        <td>{{ $user->psm_id }}</td>
-        <td>{{ $user->userID }}</td>
-        <td>{{ $user->psm_type }}</td>
-        <td>{{ $user->psm_sid }}</td>
-        <td>{{ $user->psm_snum }}</td>
-        </tr>
-        @endforeach
-        </table>
-      @endif
   </div><!-- /.container -->
 </div>
 <!-- /.content -->
