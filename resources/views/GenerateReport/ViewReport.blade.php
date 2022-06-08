@@ -8,14 +8,6 @@ $roles = session()->get('user_type');
 
 // var_dump($all);
 ?>
-?>
-<style>
-	table.center{
-		margin-left :auto;
-		margin-right :auto;
-	}
-	}
-</style>
 <x-header-new />
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -25,11 +17,9 @@ $roles = session()->get('user_type');
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0 text-dark">Student Profile</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item active">Utama</li>
             <!-- <li class="breadcrumb-item active">Starter Page</li> -->
           </ol>
         </div><!-- /.col -->
@@ -37,74 +27,36 @@ $roles = session()->get('user_type');
     </div><!-- /.container-fluid -->
   </div>
   <!-- /.content-header -->
- 
-  <style>
-  .form-center form {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-}
 </style>
   <!-- Main content -->
-  <style type="text/css">
-			<style>
-            
-			  table {
-			  font-family: arial, sans-serif;
-			  border-collapse: collapse;
-			  border: 1px solid black;
-			  width: 100%;}
-			  
-			  th {
-				border: 1px solid black;
-				border-collapse: collapse;
-				text-align: center;
-				padding: 6px;
-				background:#B2B2B2;
-				color: black;}
-				
-			</style>
-		 </style>
   <center>
 			 <h1 style="text-align: center;">Report List</h1>
        </br>
-		<button><a href="AddMeetingBooking" >Add Meeting Booking<class="nav-link  @if(url()->current() ===  URL::to('/AddMeetingBooking'))
-		active
-		@endif">
-		</a></button>
-		<button><a href="ViewMeetingBooking" >View Meeting Booking<class="nav-link  @if(url()->current() ===  URL::to('/ViewMeetingBooking'))
-		active
-		@endif">
-		</a></button>
-		
-  </center>
-			<center><table>
+			<table class="table09">
 			<tr class="center">
 				<br><br>
-				<th>Student ID</th>
+				<th>Report ID</th>
 				<th>Date</th>
 				<th>Time</th>
 				<th>Title</th>
 				<th>Description</th>
+				<th>Action</th>
 			</tr> 
       @foreach ($reports as $data)
    <tr>
-            <td>&nbsp&nbsp{{$data->Student_ID}}</td>
+            <td>&nbsp&nbsp{{$data->id}}</td>
             <td>&nbsp&nbsp{{$data->Date}}</td>
             <td>&nbsp&nbsp{{$data->Time}}</td>
             <td>&nbsp&nbsp{{$data->Title}}</td>
             <td>&nbsp&nbsp{{$data->Description}}</td>
-			<td>
-			<td>
-			<td><input type="submit" name="Submit" id="Submit" value="Delete" method="post"><td>
-
+			<td><a href="click_edit/{{$data->id}}" class="btn btn-success">Edit</a>
     </tr>
      @endforeach
-      
-        
-
-		</table></center>
+		</table><br>
+    <button><a href="AddReport" >Add Student Progress<class="nav-link  @if(url()->current() ===  URL::to('/AddReport'))
+	active
+    @endif">
+		</a></button></center>
   <!-- /.content -->
 
 </div>

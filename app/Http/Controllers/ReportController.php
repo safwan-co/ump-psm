@@ -24,7 +24,7 @@ class ReportController extends Controller
     
     function addReport(Request $req) //student add reports
     {
-        $Student_ID = $req->input('Student_ID');
+        $id = $req->input('id');
         $Date = $req->input('Date');
         $Time = $req->input('Time');
         $Title = $req->input('Title');
@@ -33,7 +33,7 @@ class ReportController extends Controller
         //table meetings
         $reports = new reports;
         $reports->userID = session()->get('logged_user');
-        $reports->Student_ID = $Student_ID;
+        $reports->id = $id;
         $reports->Date = $Date;
         $reports->Time = $Time;
         $reports->Title = $Title;
@@ -71,7 +71,21 @@ class ReportController extends Controller
         return View('GenerateReport.EditReport'); 
     }
     
+    function edit_function($id)
+    {
+        $student = DB::select('select * from reports where id = ?', [$id]);          
+        return view('GenerateReport.EditReport',['student'=>$student]);
     
-    
+    }
+    function update_function(Request $req)
+    {
+        $data=reports::find($req->id);
+        $data->id=$req->id;
+        $data->Date=$req->Date;
+        $data->Time=$req->Time;
+        $data->Title=$req->Title;
+        $data->Description=$req->Description;
+        $data->save();
+        return redirect('ViewReport');
+    }
 }
-

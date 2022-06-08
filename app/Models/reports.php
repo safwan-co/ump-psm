@@ -10,8 +10,9 @@ class reports extends Model
     use HasFactory;
 
     public $timestamps = false;
+    public $incrementing = false;
     protected $fillable = [
-        'Student_ID', 'Date', 'Time','Title', 'Description'
+        'id', 'Date', 'Time','Title', 'Description'
     ];
     
 }
