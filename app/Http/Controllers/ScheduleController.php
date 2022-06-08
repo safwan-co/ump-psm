@@ -20,7 +20,7 @@ class ScheduleController extends Controller
         return View('Schedule.AddSchedule')->with('psmuser', $users);
     }
     
-    function addSchedule(Request $req) //student add reports
+    function addSchedule(Request $req) //
     {
         $psm_sid = $req->input('psm_sid');
         $psm_year = $req->input('psm_year');
@@ -64,8 +64,9 @@ class ScheduleController extends Controller
     {
         return View('Schedule.EditSchedule'); 
     }
-    
-    
-    
+    public function index(){
+        $users = DB::select('select * from psmuser ORDER BY psmsid ASC');
+        return view('viewSchedule',['psmuser'=>$users]);
+    }
 }
 

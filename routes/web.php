@@ -120,10 +120,18 @@ Route::get('AddRubric', [RubricController::class, 'RubricInterface']);//student 
 
 Route::post('Rubric', 'RubricController@addRubric');
 
-//Schedule
+//! Schedule
 use App\Http\Controllers\ScheduleController;
 
 Route::get('AddSchedule', [ScheduleController::class, 'ScheduleInterface']);//student add meeting booking
-
 Route::post('Schedule', 'ScheduleController@addSchedule');
+Route::get('viewSchedule', [ScheduleController::class, 'viewSchedule']);//student add meeting booking
+Route::get('view-records','StudViewController@index');
+
+/*Route::get('getSchedule', function () {
+
+    $psmuser = DB::table('psmuser')->get();
+
+    return view('getSchedule', ['psmuser' => $psmuser]);
+});*/
 //test

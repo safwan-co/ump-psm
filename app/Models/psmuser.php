@@ -11,7 +11,6 @@ class psmuser extends Model
 
     public $timestamps = false;
     protected $fillable = [
-        'psm_id', 'userID', 'psm_type'
+        'psm_id', 'userID', 'psm_type','psm_sid','psm_snum'
     ];
-    
 }

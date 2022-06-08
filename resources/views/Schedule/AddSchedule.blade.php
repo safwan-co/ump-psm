@@ -38,7 +38,13 @@ $roles = session()->get('user_type');
   <div class="content">
     <div class="container">
 	<h1 style="text-align: center;">Schedule</h1>
-       <p>add your code here</p>
+    <form class="form-group" action="">
+      {{@csrf_field()}}
+      <label for="userid">User ID</label>
+      <input name="userID" id="userID" type="text"> <br>
+      <input type="submit" value="Save">
+    </form>
+
     </div><!-- /.container -->
   </div>
   <!-- /.content -->

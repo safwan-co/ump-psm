@@ -78,7 +78,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 				<!-- Sidebar Menu -->
 				<nav class="mt-2">
 					<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-
 						<li class="nav-item">
 							<a href="/home" class="nav-link  @if(url()->current() ===  URL::to('/home'))
 								active
@@ -142,10 +141,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 								</li>
 
 								<li class="nav-item">
-									<a href="AddSchedule" class="nav-link  @if(url()->current() ===  URL::to(''))
+									<a href="viewSchedule" class="nav-link  @if(url()->current() ===  URL::to(''))
 								active
 						   @endif">
-										<p>Schedule</p>
+										<p>View Schedule</p>
 									</a>
 								</li>
 							</ul>
