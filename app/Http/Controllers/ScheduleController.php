@@ -19,7 +19,6 @@ class ScheduleController extends Controller
             ->get();
         return View('Schedule.AddSchedule')->with('psmuser', $users);
     }
-    
     function addSchedule(Request $req) //
     {
         $psm_sid = $req->input('psm_sid');
@@ -64,9 +63,15 @@ class ScheduleController extends Controller
     {
         return View('Schedule.EditSchedule'); 
     }
-    public function index(){
-        $users = DB::select('select * from psmuser ORDER BY psmsid ASC');
-        return view('viewSchedule',['psmuser'=>$users]);
+    public function indexStudent(){
+        $users = DB::select('select * from psmuser WHERE userID = $userID ORDER BY psm_sid ASC');
+        return view('Schedule.viewSchedule',['psmuser'=>$users]);
+    }
+    public static function indexCoordinator(){
+        $users = DB::select('select * from psmuser WHERE psm_type = "lec"');
+        return view('Schedule.viewCooSchedule',['users'=>$users]);
+        //$users = DB::table('psmuser')->where('psm_type', '=', "lec")->get();
+        //return View('Schedule.viewCooSchedule')->with('psmuser', ['users'=>$users]);
     }
 }
 
