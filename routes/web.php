@@ -128,8 +128,8 @@ use App\Http\Controllers\ScheduleController;
 //Route::get('viewSchedule', [ScheduleController::class, 'viewSchedule']);//
 //Route::get('viewStd','ScheduleController@indexStudent');
 //Route::get('viewCoo','ScheduleController@indexCoordinator');
-Route::get('viewStdSchedule', 'ScheduleController@indexStudent');//student
-Route::get('viewSupSchedule');//supervisor
+Route::get('viewStdSchedule', 'ScheduleController@personalStudent');//student
+Route::get('viewSupSchedule', 'ScheduleController@indexStudent');//supervisor
 Route::get('viewCooSchedule', 'ScheduleController@indexCoordinator');//coordinator
 //Route::get('viewCooSchedule', function(){return view('Schedule/viewCooSchedule');});
 //Route::post('indexCoordinator()');
