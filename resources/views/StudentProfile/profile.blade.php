@@ -17,7 +17,7 @@ $roles = session()->get('user_type');
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0 text-dark">Student Profile</h1>
+        <h1 class="m-0 text-dark">Student Profile</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -40,7 +40,7 @@ $roles = session()->get('user_type');
             <h4>PSM Title:</h4>
           </td>
           <td width="20%">
-            <h2>NAME</h2>
+            <h2>Name</h2>
             <h2>Matric ID</h2>
             <h2>Faculty</h2>
             <h2>Course</h2>

@@ -166,7 +166,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="/studentprofile" class="nav-link  @if(url()->current() ===  URL::to('/studentprofile'))
+							<a href="/supervisorprofile" class="nav-link  @if(url()->current() ===  URL::to('/supervisorprofile'))
 								active
 						   @endif">
 								<p>
@@ -243,7 +243,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="/studentprofile" class="nav-link  @if(url()->current() ===  URL::to('/studentprofile'))
+							<a href="/coordinatorprofile" class="nav-link  @if(url()->current() ===  URL::to('/coordinatorprofile'))
 								active
 						   @endif">
 								<p>
