@@ -45,6 +45,8 @@ class studentController extends Controller
         $address = $req->input('address');
         $phone = $req->input('phone');
         $email = $req->input('email');
+        $sv_name = $req->input('sv_name');
+        $psm_title = $req->input('psm_title');
 
         //table users
         $users = users::where('userID', '=', session()->get('logged_user'))->get()->first();
@@ -57,6 +59,8 @@ class studentController extends Controller
         $students->course = $course;
         $students->sem_year = $sem_year;
         $students->address = $address;
+        $students->sv_name = $sv_name;
+        $students->psm_title = $psm_title;
         $students->save();
         return redirect("studentprofile");
     }

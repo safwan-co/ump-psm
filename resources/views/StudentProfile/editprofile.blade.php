@@ -39,7 +39,7 @@ $roles = session()->get('user_type');
                     <tr>
                         <td width="30%" class="topleft"><img src="https://avatars.dicebear.com/api/initials/:{{$user_name}}.svg" width="200" height="180">
                             <h2><br></h2>
-                            <h4>PSM Title:</h4>
+                            <h4></h4>
                         </td>
                         <td width="70%">
                             <table>
@@ -112,9 +112,16 @@ $roles = session()->get('user_type');
                                         <h2><br> Supervisor Name</h2>
                                     </td>
                                     <td width="70%">
-                                        <h3><br>:&nbsp&nbsp{{$students[0]->sv_name}}</h3>
+                                        <h3><br>:&nbsp&nbsp<input type="text" name="sv_name" value="{{$students[0]->sv_name}}"></h3>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td width="30%">
+                                        <h2><br> PSM Title</h2>
+                                    </td>
+                                    <td width="70%">
+                                        <h3><br>:&nbsp&nbsp<input type="text" name="psm_title" value="{{$students[0]->psm_title}}"></h3>
+                                    </td>
                             </table>
                         </td>
                     </tr>

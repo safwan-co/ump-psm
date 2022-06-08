@@ -37,9 +37,9 @@ $roles = session()->get('user_type');
                 {{ csrf_field() }}
                 <table style="width:100%">
                     <tr>
-                        <td width="30%" class="topleft"><img src="https://avatars.dicebear.com/api/initials/:{{$user_name}}.svg" width="200" height="180">
+                    <td width="30%" class="topleft"><img src="https://avatars.dicebear.com/api/initials/:{{$user_name}}.svg" width="200" height="180">
                             <h2><br></h2>
-                            <h4>PSM Title:</h4>
+                            <h4></h4>
                         </td>
                         <td width="70%">
                             <table>

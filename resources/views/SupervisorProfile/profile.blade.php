@@ -37,7 +37,7 @@ $roles = session()->get('user_type');
                 <tr>
                     <td width="30%" class="topleft"><img src="https://avatars.dicebear.com/api/initials/:{{$user_name}}.svg" width="200" height="180">
                         <h2><br></h2>
-                        <h4>PSM Title:</h4>
+                        <h4></h4>
                     </td>
                     <td width="20%">
                         <h2>Name</h2>
@@ -47,7 +47,6 @@ $roles = session()->get('user_type');
                         <h2>Office</h2>
                         <h2>Phone Number</h2>
                         <h2>Email</h2>
-                        <h2>Student Name</h2>
                     </td>
                     <td width="50%">
                         <h3>:&nbsp&nbsp{{$supervisors[0]->name}}</h3>
@@ -57,11 +56,6 @@ $roles = session()->get('user_type');
                         <h3>:&nbsp&nbsp{{$supervisors[0]->office}}</h3>
                         <h3>:&nbsp&nbsp{{$supervisors[0]->phone}}</h3>
                         <h3>:&nbsp&nbsp{{$supervisors[0]->email}}</h3>
-                        @if(empty($supervisors[0]->std_name))
-                        <h3>:</h3>
-                        @else
-                        <h3>:&nbsp&nbsp{{$supervisors[0]->std_name}}</h3>
-                        @endif
                     </td>
                 </tr>
             </table>
