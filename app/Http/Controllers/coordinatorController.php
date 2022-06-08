@@ -36,7 +36,7 @@ class coordinatorController extends Controller
 
     }
 
-    public function updateprofile(Request $req)
+    public function update_profile(Request $req)
     {
         $faculty = $req->input('faculty');
         $office = $req->input('office');

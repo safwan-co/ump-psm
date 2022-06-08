@@ -36,7 +36,7 @@ class supervisorController extends Controller
 
     }
 
-    public function updateprofile(Request $req)
+    public function update_profile(Request $req)
     {
         $faculty = $req->input('faculty');
         $expertise = $req->input('expertise');
