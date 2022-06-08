@@ -1,18 +1,15 @@
 <?php
-
 $logged_user = session()->get('logged_user');
 $user_name = session()->get('name');
 $roles = session()->get('user_type');
 // $all = session()->all();
-
 // var_dump($all);
 ?>
 <style>
-	table.center{
-		margin-left :auto;
-		margin-right :auto;
-	}
-
+table.center{
+  margin-left :auto;
+  margin-right :auto;
+}
 </style>
 <x-header-new/>
 <!-- Content Wrapper. Contains page content -->
@@ -35,67 +32,67 @@ $roles = session()->get('user_type');
   <!-- /.content-header -->
 
   <!-- Main content -->
-  <div class="content">
-    <div class="container">
-	    <h1 style="text-align: center;">View Schedule</h1>
-      @if($roles == 'Student')
-      <?php $psmsession = 1;?>
-      @foreach($psmuser as $user)
-      <table class="table table-striped">
-        <?php
-        $psmsession++;
-        $currentID=$user->userID;
-        echo $currentID;
-        //if($currentID == $userID)
-        //{
-        ?>
+<div class="content">
+  <div class="container">
+    <h1 style="text-align: center;">View Schedule</h1>
+    @if($roles == 'Student')
+    <?php $psmsession = 1;?>
+    @foreach($psmuser as $user)
+    <table class="table table-striped">
+      <?php
+      $psmsession++;
+      $currentID=$user->userID;
+      echo $currentID;
+      //if($currentID == $userID)
+      //{
+      ?>
+      <tr>
+        <td colspan="2" style="text-align: center" class="table-dark">{{$user->userID}}</td>
+      </tr>
+      <tr>
+        <td colspan="2" style="text-align: center" class="table-light">{{$user_name}}</td>
+      </tr>
+      <tr>
+        <td>PSM ID</td>
+        <td>{{$user->psm_id}}</td>
+      </tr>
+      <tr>
+        <td>PSM Year</td>
+        <td>{{$user->psm_sid}}</td>
+      </tr>
+      <tr>
+        <td>Session</td>
+        <td>{{$user->psm_snum}}</td>
+      </tr>
+      <?php
+      //}
+      ?>
+    </table>
+    @endforeach
+    @endif
+    @if($roles == 'Coordinator')
+      <table class="table">
         <tr>
-          <td colspan="2" style="text-align: center" class="table-dark">{{$user->userID}}</td>
+        <td>PSM ID</td>
+        <td>ID</td>
+        <td>Type</td>
+        <td>Schedule ID</td>
+        <td>Session</td>
         </tr>
+        @foreach ($psmuser as $user)
         <tr>
-          <td colspan="2" style="text-align: center" class="table-light">{{$user_name}}</td>
+        <td>{{ $user->psm_id }}</td>
+        <td>{{ $user->userID }}</td>
+        <td>{{ $user->psm_type }}</td>
+        <td>{{ $user->psm_sid }}</td>
+        <td>{{ $user->psm_snum }}</td>
         </tr>
-        <tr>
-          <td>PSM ID</td>
-          <td>{{$user->psm_id}}</td>
-        </tr>
-        <tr>
-          <td>PSM Year</td>
-          <td>{{$user->psm_sid}}</td>
-        </tr>
-        <tr>
-          <td>Session</td>
-          <td>{{$psmsession}}</td>
-        </tr>
-        <?php
-        //}
-        ?>
-      </table>
-      @endforeach
+        @endforeach
+        </table>
       @endif
-      @if($roles == 'Coordinator')
-        <table class="table">
-          <tr>
-          <td>PSM ID</td>
-          <td>ID</td>
-          <td>Type</td>
-          <td>Schedule ID</td>
-          <td>Session</td>
-          </tr>
-          @foreach ($psmuser as $user)
-          <tr>
-          <td>{{ $user->psm_id }}</td>
-          <td>{{ $user->userID }}</td>
-          <td>{{ $user->psm_type }}</td>
-          <td>{{ $user->psm_sid }}</td>
-          <td>{{ $user->psm_snum }}</td>
-          </tr>
-          @endforeach
-          </table>
-        @endif
-    </div><!-- /.container -->
-  </div>
-  <!-- /.content -->
+  </div><!-- /.container -->
+</div>
+<!-- /.content -->
 
 </div>
 <!-- ./wrapper -->

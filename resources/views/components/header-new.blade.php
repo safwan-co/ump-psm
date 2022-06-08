@@ -140,8 +140,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 									</a>
 								</li>
 
-								<li class="nav-item">
-									<a href="viewSchedule" class="nav-link  @if(url()->current() ===  URL::to(''))
+								<li class="nav-item"><!--Student-->
+									<a href="Schedule" class="nav-link  @if(url()->current() ===  URL::to(''))
 								active
 						   @endif">
 										<p>View Schedule</p>
@@ -218,11 +218,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 									</a>
 								</li>
 
-								<li class="nav-item">
-									<a href="AddSchedule" class="nav-link  @if(url()->current() ===  URL::to(''))
+								<li class="nav-item"><!--SV-->
+									<a href="Schedule" class="nav-link  @if(url()->current() ===  URL::to(''))
 								active
 						   @endif">
-										<p>Schedule</p>
+										<p>View Schedule</p>
 									</a>
 								</li>
 							</ul>
@@ -295,11 +295,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 									</a>
 								</li>
 
-								<li class="nav-item">
-									<a href="AddSchedule" class="nav-link  @if(url()->current() ===  URL::to(''))
+								<li class="nav-item"><!--Coordinator-->
+									<a href="Schedule" class="nav-link  @if(url()->current() ===  URL::to(''))
 								active
 						   @endif">
-										<p>Schedule</p>
+										<p>View Schedule</p>
 									</a>
 								</li>
 							</ul>
