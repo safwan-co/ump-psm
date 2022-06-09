@@ -101,4 +101,17 @@ class ReportController extends Controller
         $data->save();
         return redirect('ViewReport');
     }
+
+    function SV_View($id)
+    {
+        $student = DB::select('select * from reports where id = ?', [$id]);          
+        return view('GenerateReport.SvReportView',['student'=>$student]);
+    
+    }
+
+    function back()
+    {
+        return redirect('ViewReportSV');
+    }
+
 }

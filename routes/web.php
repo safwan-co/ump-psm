@@ -97,7 +97,9 @@ Route::get('ViewReport', [ReportController::class, 'viewReport']);
 Route::get('ViewReportSV', [ReportController::class, 'viewReportSV']); 
 Route::post('GenerateReport', 'ReportController@addReport');
 Route::get('click_edit/{id}','ReportController@edit_function');
+Route::get('click_view/{id}','ReportController@SV_View');
 Route::post('update','ReportController@update_function');
+Route::post('back','ReportController@back');
 
 
 //Student Ranking
