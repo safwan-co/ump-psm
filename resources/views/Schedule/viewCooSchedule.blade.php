@@ -36,13 +36,17 @@ $roles = session()->get('user_type');
   <div class="container">
   <h1 style="text-align: center;">View Schedule</h1>
   @if($roles == 'Coordinator')
+  <a href="addPSM" class="btn btn-primary">Add PSM User</a>
+  <a href="" class="btn btn-dark" style="float: right;">Student Schedule</a>
+
+  <br><br>
   <table class="table">
-      <tr>
+      <tr class="table-dark">
       <td>PSM ID</td>
       <td>ID</td>
       <td>Type</td>
       <td>Schedule ID</td>
-      <td>Session</td>
+      <!--<td>Session</td>-->
       </tr>
 
       @foreach ($users as $user)
@@ -51,7 +55,7 @@ $roles = session()->get('user_type');
       <td>{{ $user->userID }}</td>
       <td>{{ $user->psm_type }}</td>
       <td>{{ $user->psm_sid }}</td>
-      <td>{{ $user->psm_snum }}</td>
+      <!--<td>{{ $user->psm_snum }}</td>-->
       </tr>
       @endforeach
   </table>
