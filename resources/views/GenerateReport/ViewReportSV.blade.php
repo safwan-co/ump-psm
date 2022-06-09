@@ -49,14 +49,11 @@ $roles = session()->get('user_type');
             <td>&nbsp&nbsp{{$data->Time}}</td>
             <td>&nbsp&nbsp{{$data->Title}}</td>
             <td>&nbsp&nbsp{{$data->Description}}</td>
-			<td><a href="click_edit/{{$data->id}}" class="btn btn-success">Edit</a></td>
+			<td><a href="click_view/{{$data->id}}" class="btn btn-success">View</a></td>
     </tr>
      @endforeach
 		</table><br>
-    <a href="AddReport" class="btn btn-success">Add Student Progress<class="nav-link  @if(url()->current() ===  URL::to('/AddReport'))
-	active
-    @endif">
-		</a></center>
+</center>
   <!-- /.content -->
 
 </div>
