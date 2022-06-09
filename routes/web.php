@@ -126,6 +126,9 @@ use App\Http\Controllers\ScheduleController;
 Route::get('viewStdSchedule', 'ScheduleController@personalStudent');//student
 Route::get('viewSupSchedule', 'ScheduleController@superStudent');//supervisor
 Route::get('viewCooSchedule', 'ScheduleController@indexCoordinator');//coordinator
+Route::get('addPSM', 'ScheduleController@addPSM');//coordinator
+
+
 //Route::get('viewCooSchedule', function(){return view('Schedule/viewCooSchedule');});
 //Route::post('indexCoordinator()');
 
