@@ -47,6 +47,9 @@ $roles = session()->get('user_type');
                         <h2>Office</h2>
                         <h2>Phone Number</h2>
                         <h2>Email</h2>
+                        <h2>Students Name</h2>
+
+
                     </td>
                     <td width="50%">
                         <h3>:&nbsp&nbsp{{$supervisors[0]->name}}</h3>
@@ -56,6 +59,7 @@ $roles = session()->get('user_type');
                         <h3>:&nbsp&nbsp{{$supervisors[0]->office}}</h3>
                         <h3>:&nbsp&nbsp{{$supervisors[0]->phone}}</h3>
                         <h3>:&nbsp&nbsp{{$supervisors[0]->email}}</h3>
+                        <h3>:&nbsp&nbsp{{$supervisors[0]->std_name}}</h3>
                     </td>
                 </tr>
             </table>

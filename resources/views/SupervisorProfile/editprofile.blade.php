@@ -99,6 +99,14 @@ $roles = session()->get('user_type');
                                         <h3><br>:&nbsp&nbsp<input type="text" name="email" value="{{$supervisors[0]->email}}"></h3>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td width="30%">
+                                        <h2><br> Student Name</h2>
+                                    </td>
+                                    <td width="70%">
+                                        <h3><br>:&nbsp&nbsp<input type="text" name="std_name" value="{{$supervisors[0]->std_name}}"></h3>
+                                    </td>
+                                </tr>
                             </table>
                         </td>
                     </tr>
