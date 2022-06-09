@@ -43,6 +43,7 @@ class supervisorController extends Controller
         $office = $req->input('office');
         $phone = $req->input('phone');
         $email = $req->input('email');
+        $std_name = $req->input('std_name');
 
         //table users
         $users = users::where('userID', '=', session()->get('logged_user'))->get()->first();
@@ -54,6 +55,7 @@ class supervisorController extends Controller
         $supervisors->faculty = $faculty;
         $supervisors->expertise = $expertise;
         $supervisors->office = $office;
+        $supervisors->std_name = $std_name;
         $supervisors->save();
         return redirect("supervisorprofile");
     }
