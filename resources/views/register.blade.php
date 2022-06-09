@@ -37,7 +37,7 @@
 							<option value="Coordinator">Coordinator</option>
 							<option value="Supervisor">Supervisor</option>
 							<option value="Student">Student</option>
-							<option value="Technician">Technician</option>
+						
 						</select>
 					</div>
 				</div>
