@@ -93,11 +93,11 @@ Route::post('MeetingBooking', 'MeetingController@addMeetingBooking');
 use App\Http\Controllers\ReportController;
 
 Route::get('AddReport', [ReportController::class, 'ReportInterface']);//student add meeting booking
-Route::get('ViewReport', [ReportController::class, 'viewReport']); //student view meeting
-Route::get('EditReport', [ReportController::class, 'editReport']); //student edit meetig booking
-Route::get('RetriveReport', [ReportController::class, 'retriveReport']); //sv view meeting list detail
-
+Route::get('ViewReport', [ReportController::class, 'viewReport']); 
 Route::post('GenerateReport', 'ReportController@addReport');
+Route::get('click_edit/{id}','ReportController@edit_function');
+Route::post('update','ReportController@update_function');
+
 
 //Student Ranking
 use App\Http\Controllers\StudentRankingController;
