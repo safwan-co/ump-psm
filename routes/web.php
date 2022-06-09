@@ -78,16 +78,6 @@ Route::get('coordinatorprofile', [coordinatorController::class, 'index']);
 Route::get('COedit', [coordinatorController::class, 'editprofile']);
 Route::post('CO_update', 'coordinatorController@update_profile');
 
-//MeetingBooking
-use App\Http\Controllers\MeetingController;
-
-Route::get('AddMeetingBooking', [MeetingController::class, 'MeetingInterface']);//student add meeting booking
-Route::get('ViewMeetingBooking', [MeetingController::class, 'viewMeetingBooking']); //student view meeting
-Route::get('EditMeetingBooking', [MeetingController::class, 'editMeetingBooking']); //student edit meetig booking
-Route::get('RetriveMeeting', [MeetingController::class, 'retriveMeeting']); //sv view meeting list detail
-Route::get('AddMeetingStatus', [MeetingController::class, 'addMeetingStatus']); //sv add meeting status
-
-Route::post('MeetingBooking', 'MeetingController@addMeetingBooking');
 
 //Report
 use App\Http\Controllers\ReportController;
@@ -95,8 +85,10 @@ use App\Http\Controllers\ReportController;
 Route::get('AddReport', [ReportController::class, 'ReportInterface']);//student add meeting booking
 Route::get('ViewReport', [ReportController::class, 'viewReport']); 
 Route::get('ViewReportSV', [ReportController::class, 'viewReportSV']); 
+Route::get('ViewSVList', [ReportController::class, 'SVList']); 
 Route::post('GenerateReport', 'ReportController@addReport');
 Route::get('click_edit/{id}','ReportController@edit_function');
+Route::get('click_delete/{id}','ReportController@delete');
 Route::get('click_view/{id}','ReportController@SV_View');
 Route::post('update','ReportController@update_function');
 Route::post('back','ReportController@back');

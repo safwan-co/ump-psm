@@ -30,33 +30,26 @@ $roles = session()->get('user_type');
 </style>
   <!-- Main content -->
   <center>
-			 <h1 style="text-align: center;">Report List</h1>
+			 <h1 style="text-align: center;">Supervisor List</h1>
        </br>
 			<table class="table09">
 			<tr class="center">
 				<br><br>
-				<th>Report ID</th>
-        <th>Supervisor</th>
-				<th>Date</th>
-				<th>Time</th>
-				<th>Title</th>
-				<th>Action</th>
+				<th>Supervisor ID</th>
+        <th>Supervisor Name</th>
 			</tr> 
-      @foreach ($reports as $data)
+      @foreach ($users as $data)
    <tr>
-            <td>&nbsp&nbsp{{$data->id}}</td>
-            <td>&nbsp&nbsp{{$data->sv}}</td>
-            <td>&nbsp&nbsp{{$data->Date}}</td>
-            <td>&nbsp&nbsp{{$data->Time}}</td>
-            <td>&nbsp&nbsp{{$data->Title}}</td>
-			<td><a href="click_edit/{{$data->id}}" class="btn btn-success">Edit</a><a href="click_delete/{{$data->id}}" class="btn btn-danger">Delete</a></td>
+            <td>&nbsp&nbsp{{$data->userID}}</td>
+            <td>&nbsp&nbsp{{$data->name}}</td>
     </tr>
      @endforeach
 		</table><br>
-    <a href="AddReport" class="btn btn-success">Add Student Progress<class="nav-link  @if(url()->current() ===  URL::to('/AddReport'))
-	active
-    @endif">
-		</a></center>
+    <a href="AddReport" class="btn btn-success">Back<class="nav-link  @if(url()->current() ===  URL::to('/AddReport'))
+		active
+		@endif">
+		</a>
+</center>
   <!-- /.content -->
 
 </div>

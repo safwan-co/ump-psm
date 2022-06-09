@@ -114,4 +114,21 @@ class ReportController extends Controller
         return redirect('ViewReportSV');
     }
 
+    function SVList() //student view reports
+    {
+        $USER_ID = session()->get('logged_user');
+        $users = DB::table('users')
+            ->where('user_type', '=', 'Supervisor')
+            ->get();
+        return View('GenerateReport.ViewSVList')->with('users', $users);
+         //var_dump($users);
+    }
+    
+    function delete($id)
+    {
+        $student = DB::delete('delete from reports where id = ?', [$id]);          
+        return redirect('ViewReport');
+    
+    }
+
 }

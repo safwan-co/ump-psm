@@ -41,7 +41,7 @@
 					<label for="id">Report ID:</label>
 					</td>
 					<td>
-					<input type="text" class="form-control" name="id" id="name" value="{{ $student[0]->id }}"> 
+					<input type="text" class="form-control" name="id" id="name" value="{{ $student[0]->id }}" readonly> 
 					<td>
 					</p>
 				</td>
