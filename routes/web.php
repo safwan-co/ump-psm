@@ -98,8 +98,10 @@ Route::post('back','ReportController@back');
 use App\Http\Controllers\StudentRankingController;
 
 Route::get('AddRanking', [StudentRankingController::class, 'RankingInterface']);//student add meeting booking
-
+Route::get('ViewRanking', [StudentRankingController::class, 'viewRanking']); //student view ranking
+Route::get('RetriveRanking/{id}', [StudentRankingController::class, 'retriveRanking']); //student view ranking list detail
 Route::post('StudentRanking', 'StudentRankingController@addRanking');
+Route::put('EditRanking/{id}' , [StudentRankingController::class, 'editRanking']); //student edit Ranking
 
 //Evaluation
 use App\Http\Controllers\EvaluationController;
