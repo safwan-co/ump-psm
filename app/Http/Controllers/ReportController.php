@@ -25,6 +25,7 @@ class ReportController extends Controller
     function addReport(Request $req) //student add reports
     {
         $id = $req->input('id');
+        $sv = $req->input('sv');
         $Date = $req->input('Date');
         $Time = $req->input('Time');
         $Title = $req->input('Title');
@@ -34,6 +35,7 @@ class ReportController extends Controller
         $reports = new reports;
         $reports->userID = session()->get('logged_user');
         $reports->id = $id;
+        $reports->sv = $sv;
         $reports->Date = $Date;
         $reports->Time = $Time;
         $reports->Title = $Title;
@@ -57,6 +59,7 @@ class ReportController extends Controller
     {
         $USER_ID = session()->get('logged_user');
         $users = DB::table('reports')
+            ->where('sv', '=', $USER_ID)
             ->get();
         return View('GenerateReport.ViewReportSV')->with('reports', $users);
          //var_dump($users);
@@ -90,6 +93,7 @@ class ReportController extends Controller
     {
         $data=reports::find($req->id);
         $data->id=$req->id;
+        $data->sv=$req->sv;
         $data->Date=$req->Date;
         $data->Time=$req->Time;
         $data->Title=$req->Title;

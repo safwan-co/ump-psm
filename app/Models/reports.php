@@ -12,7 +12,7 @@ class reports extends Model
     public $timestamps = false;
     public $incrementing = false;
     protected $fillable = [
-        'id', 'Date', 'Time','Title', 'Description'
+        'id', 'sv', 'Date', 'Time','Title', 'Description'
     ];
     
 }

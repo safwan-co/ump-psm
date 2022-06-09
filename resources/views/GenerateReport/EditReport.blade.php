@@ -46,6 +46,18 @@
 					</p>
 				</td>
                 </tr>
+
+				<td><td>
+					<p>
+					<td>
+					<label for="sv">Supervisor:</label>
+					</td>
+					<td>
+					<input type="text" class="form-control" name="sv" id="sv" value="{{ $student[0]->sv }}">  
+					</td>
+					</p>
+				</td>
+				</tr>
 			
 				<td><td>
 					<p>

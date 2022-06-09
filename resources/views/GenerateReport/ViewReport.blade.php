@@ -36,6 +36,7 @@ $roles = session()->get('user_type');
 			<tr class="center">
 				<br><br>
 				<th>Report ID</th>
+        <th>Supervisor</th>
 				<th>Date</th>
 				<th>Time</th>
 				<th>Title</th>
@@ -45,6 +46,7 @@ $roles = session()->get('user_type');
       @foreach ($reports as $data)
    <tr>
             <td>&nbsp&nbsp{{$data->id}}</td>
+            <td>&nbsp&nbsp{{$data->sv}}</td>
             <td>&nbsp&nbsp{{$data->Date}}</td>
             <td>&nbsp&nbsp{{$data->Time}}</td>
             <td>&nbsp&nbsp{{$data->Title}}</td>

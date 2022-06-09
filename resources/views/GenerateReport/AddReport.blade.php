@@ -49,7 +49,19 @@ $roles = session()->get('user_type');
 					<label for=id>Report ID:</label>
 					</td>
 					<td>
-					<input type="text" name="id" placeholder="Student ID_No">
+					<input type="text" name="id" placeholder="Student ID_Report No">exp: CBXXXXX_1
+					</td>
+					</p>
+				</td>
+				</tr>
+
+				<td><td>
+					<p>
+					<td>
+					<label for=id>Supervisor:</label>
+					</td>
+					<td>
+					<input type="text" name="sv">
 					</td>
 					</p>
 				</td>
