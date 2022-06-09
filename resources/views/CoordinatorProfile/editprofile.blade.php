@@ -17,7 +17,6 @@ $roles = session()->get('user_type');
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Edit Profile</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -31,75 +30,111 @@ $roles = session()->get('user_type');
     <!-- /.content-header -->
 
     <!-- Main content -->
+    <center>
     <div class="content">
         <div class="container">
+        <table style="width:100%">
+        <tr>
+        <center><h1>Edit Profile</h1></center>
+        <fieldset>
+			 <table class="center">
             <form action="CO_update" method="post">
                 {{ csrf_field() }}
-                <table style="width:100%">
-                    <tr>
-                    <td width="30%" class="topleft"><img src="https://avatars.dicebear.com/api/initials/:{{$user_name}}.svg" width="200" height="180">
-                            <h2><br></h2>
-                            <h4></h4>
-                        </td>
-                        <td width="70%">
-                            <table>
-                                <tr>
-                                    <td width="30%">
-                                        <h2><br> Name</h2>
-                                    </td>
-                                    <td width="70%">
-                                        <h3><br>:&nbsp&nbsp{{$coordinators[0]->name}}</h3>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td width="30%">
-                                        <h2><br> Supervisor ID</h2>
-                                    </td>
-                                    <td width="70%">
-                                        <h3><br>:&nbsp&nbsp{{$coordinators[0]->userID}}</h3>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td width="30%">
-                                        <h2><br> Faculty</h2>
-                                    </td>
-                                    <td width="70%">
-                                        <h3><br>:&nbsp&nbsp<input type="text" name="faculty" value="{{$coordinators[0]->faculty}}"></h3>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td width="30%">
-                                        <h2><br> Office</h2>
-                                    </td>
-                                    <td width="70%">
-                                        <h3><br>:&nbsp&nbsp<input type="text" name="office" value="{{$coordinators[0]->office}}"></h3>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td width="30%">
-                                        <h2><br> Phone Number</h2>
-                                    </td>
-                                    <td width="70%">
-                                        <h3><br>:&nbsp&nbsp<input type="text" name="phone" value="{{$coordinators[0]->phone}}"></h3>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td width="30%">
-                                        <h2><br> Email</h2>
-                                    </td>
-                                    <td width="70%">
-                                        <h3><br>:&nbsp&nbsp<input type="text" name="email" value="{{$coordinators[0]->email}}"></h3>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </table>
-                <h2><br></h2>
-                <h2><br></h2>
-                <input type="submit" value="Update" class="button-73">
-                <h2><br></h2>
-            </form>
+               
+                <center>
+				<td><td>
+					<p>
+					<td>
+                  
+					</td>
+					<td>
+					
+					<td>
+					</p>
+				</td>
+                </tr>
+			
+				<td><td>
+					<p>
+					<td>
+					<h2><br> Name</h2>
+					</td>
+					<td>
+                    <h3><br>:&nbsp&nbsp{{$coordinators[0]->name}}</h3>
+					</td>
+					</p>
+				</td>
+				</tr>
+
+                <td><td>
+					<p>
+					<td>
+					<h2><br> Coordinator ID</h2>
+					</td>
+					<td>
+                    <h3><br>:&nbsp&nbsp{{$coordinators[0]->userID}}</h3>
+					</td>
+					</p>
+				</td>
+				</tr>
+
+                <td><td>
+					<p>
+					<td>
+					<h2><br>  Faculty</h2>
+					</td>
+					<td>
+                    <h3><br>:&nbsp&nbsp<input type="text" name="faculty" value="{{$coordinators[0]->faculty}}"></h3>
+					</td>
+					</p>
+				</td>
+				</tr>
+
+                <td><td>
+					<p>
+					<td>
+					<h2><br> Office</h2>
+					</td>
+					<td>
+                    <h3><br>:&nbsp&nbsp<input type="text" name="office" value="{{$coordinators[0]->office}}"></h3>
+					</td>
+					</p>
+				</td>
+				</tr>
+
+
+                <td><td>
+					<p>
+					<td>
+					<h2><br> Phone Number</h2>
+					</td>
+					<td>
+                    <h3><br>:&nbsp&nbsp<input type="text" name="phone" value="{{$coordinators[0]->phone}}"></h3>
+					</td>
+					</p>
+				</td>
+				</tr>
+
+                <td><td>
+					<p>
+					<td>
+					<h2><br> Email</h2>
+					</td>
+					<td>
+                    <h3><br>:&nbsp&nbsp<input type="text" name="email" value="{{$coordinators[0]->email}}"></h3>
+					</td>
+					</p>
+				</td>
+				</tr>
+
+               
+			</table>
+				<br>
+                <input class="btn btn-success" type="submit" name="Submit" id="Submit" value="Save" method="post">
+			</p>
+			</form>
+		</fieldset>
+</table></center>
         </div><!-- /.container -->
     </div>
     <!-- /.content -->

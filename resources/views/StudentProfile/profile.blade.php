@@ -17,7 +17,6 @@ $roles = session()->get('user_type');
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-        <h1 class="m-0 text-dark">Student Profile</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -31,26 +30,34 @@ $roles = session()->get('user_type');
   <!-- /.content-header -->
 
   <!-- Main content -->
-  <div class="content">
-    <div class="container">
-      <table style="width:100%">
+  <center>
+    <div class="content">
+        <div class="container">
+        <table style="width:100%">
         <tr>
-          <td width="30%" class="topleft"><img src="https://avatars.dicebear.com/api/initials/:{{$user_name}}.svg" width="200" height="180">
+        <center><h1>Student Profile</h1></center>
+        <fieldset>
+          <br>
+          <br>
+			 <table class="center">
+         <center><img src="https://avatars.dicebear.com/api/initials/:{{$user_name}}.svg" width="200" height="180">
             <h2><br></h2>
-            <h4>PSM Title:&nbsp&nbsp{{$students[0]->psm_title}}</h4>
-          </td>
-          <td width="20%">
+            <h4>Project Title:&nbsp&nbsp{{$students[0]->psm_title}}</h4>
+          </td></td>
+</tr>
+<br>
+          <td>
             <h2>Name</h2>
             <h2>Matric ID</h2>
             <h2>Faculty</h2>
             <h2>Course</h2>
-            <h2>Sem & Year</h2>
+            <h2>Year of Study</h2>
             <h2>Campus/Home Address</h2>
             <h2>Phone Number</h2>
             <h2>Email</h2>
             <h2>Supervisor Name</h2>
           </td>
-          <td width="50%">
+          <td>
             <h3>:&nbsp&nbsp{{$students[0]->name}}</h3>
             <h3>:&nbsp&nbsp{{$students[0]->userID}}</h3>
             <h3>:&nbsp&nbsp{{$students[0]->faculty}}</h3>
@@ -66,7 +73,7 @@ $roles = session()->get('user_type');
       </table>
       <h2><br></h2>
       <h2><br></h2>
-      <a class="button-73" role="button" href="STDedit">Edit Profile</a>
+      <center><a class="btn btn-success" role="button" href="STDedit">Edit Profile</a>
       <h2><br></h2>
     </div><!-- /.container -->
   </div>
