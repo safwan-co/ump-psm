@@ -187,7 +187,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 							<ul class="nav nav-treeview  ">
 								<li class="nav-item ">
-									<a href="AddReport" class="nav-link  @if(url()->current() ===  URL::to('/AddReport'))
+									<a href="ViewReportSV" class="nav-link  @if(url()->current() ===  URL::to('/ViewReportSV'))
 								active
 								@endif">
 										<p>Report</p>

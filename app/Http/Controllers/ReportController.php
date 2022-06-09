@@ -53,6 +53,15 @@ class ReportController extends Controller
          //var_dump($users);
     }
    
+    function viewReportSV() //student view reports
+    {
+        $USER_ID = session()->get('logged_user');
+        $users = DB::table('reports')
+            ->get();
+        return View('GenerateReport.ViewReportSV')->with('reports', $users);
+         //var_dump($users);
+    }
+   
 
     function retriveReport()  //lecturer view reports list detail
     {
