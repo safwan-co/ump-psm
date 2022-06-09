@@ -35,7 +35,8 @@ $roles = session()->get('user_type');
 <div class="content">
   <div class="container">
   <h1 style="text-align: center;">View Schedule</h1>
-    <table class="table">
+  @if($roles == 'Coordinator')
+  <table class="table">
       <tr>
       <td>PSM ID</td>
       <td>ID</td>
@@ -53,7 +54,8 @@ $roles = session()->get('user_type');
       <td>{{ $user->psm_snum }}</td>
       </tr>
       @endforeach
-    </table>
+  </table>
+  @endif
   </div><!-- /.container -->
 </div><!-- /.content -->
 

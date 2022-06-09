@@ -63,9 +63,19 @@ class ScheduleController extends Controller
     {
         return View('Schedule.EditSchedule'); 
     }
+    public function personalStudent(){
+        $USER_ID = session()->get('logged_user');
+        $users = DB::select('select * from psmuser WHERE psm_type = "std" ');
+        return view('Schedule.viewStdSchedule',['psmuser'=>$users]);
+    }
+
+    public function superStudent(){
+        $users = DB::select('select * from psmuser WHERE psm_type = "std" ORDER BY psm_sid ASC');
+        return view('Schedule.viewStdSchedule',['psmuser'=>$users]);
+    }
     public function indexStudent(){
-        $users = DB::select('select * from psmuser WHERE userID = $userID ORDER BY psm_sid ASC');
-        return view('Schedule.viewSchedule',['psmuser'=>$users]);
+        $users = DB::select('select * from psmuser WHERE psm_type = "std" ORDER BY psm_sid ASC');
+        return view('Schedule.viewStdSchedule',['psmuser'=>$users]);
     }
     public static function indexCoordinator(){
         $users = DB::select('select * from psmuser WHERE psm_type = "lec"');

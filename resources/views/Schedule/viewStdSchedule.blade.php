@@ -43,15 +43,17 @@ table.center{
       $psmsession++;
       $currentID=$user->userID;
       echo $currentID;
+      echo $user_name;
+      //echo $USERID;
       //if($currentID == $userID)
       //{
       ?>
       <tr>
         <td colspan="2" style="text-align: center" class="table-dark">{{$user->userID}}</td>
       </tr>
-      <tr>
-        <td colspan="2" style="text-align: center" class="table-light">{{$user_name}}</td>
-      </tr>
+      <!--
+      <tr><td colspan="2" style="text-align: center" class="table-light">{{$user_name}}</td></tr>
+      -->
       <tr>
         <td>PSM ID</td>
         <td>{{$user->psm_id}}</td>
