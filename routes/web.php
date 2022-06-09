@@ -82,7 +82,7 @@ Route::post('CO_update', 'coordinatorController@update_profile');
 //Report
 use App\Http\Controllers\ReportController;
 
-Route::get('AddReport', [ReportController::class, 'ReportInterface']);//student add meeting booking
+Route::get('AddReport', [ReportController::class, 'ReportInterface']);
 Route::get('ViewReport', [ReportController::class, 'viewReport']); 
 Route::get('ViewReportSV', [ReportController::class, 'viewReportSV']); 
 Route::get('ViewSVList', [ReportController::class, 'SVList']); 

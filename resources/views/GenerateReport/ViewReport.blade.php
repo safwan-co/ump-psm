@@ -40,6 +40,7 @@ $roles = session()->get('user_type');
 				<th>Date</th>
 				<th>Time</th>
 				<th>Title</th>
+        <th>Description</th>
 				<th>Action</th>
 			</tr> 
       @foreach ($reports as $data)
@@ -49,6 +50,7 @@ $roles = session()->get('user_type');
             <td>&nbsp&nbsp{{$data->Date}}</td>
             <td>&nbsp&nbsp{{$data->Time}}</td>
             <td>&nbsp&nbsp{{$data->Title}}</td>
+            <td>&nbsp&nbsp{{$data->Description}}</td>
 			<td><a href="click_edit/{{$data->id}}" class="btn btn-success">Edit</a><a href="click_delete/{{$data->id}}" class="btn btn-danger">Delete</a></td>
     </tr>
      @endforeach
