@@ -77,7 +77,7 @@ class ScheduleController extends Controller
     }
     public function indexStudent(){
         $users = DB::select('select * from psmuser WHERE psm_type = "Student" ORDER BY psm_sid ASC');
-        return view('Schedule.viewStdSchedule',['psmuser'=>$users]);
+        return view('Schedule.viewCooSchedule',['users'=>$users]);
     }
     public static function indexCoordinator(){
         $users = DB::select('select * from psmuser WHERE psm_type = "Coordinator"');

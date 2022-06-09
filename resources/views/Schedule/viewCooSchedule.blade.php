@@ -36,9 +36,10 @@ $roles = session()->get('user_type');
 	<div class="container">
 	<h1 style="text-align: center;">View Schedule</h1>
 	@if($roles == 'Coordinator')
-	<a href="addPSM" class="btn btn-primary">Add PSM User</a>
-	<a href="cooindexStd" class="btn btn-dark" style="float: right;">Student Schedule</a>
+	<!--<a href="addPSM" class="btn btn-primary">Add PSM User</a>
+	-->
 
+	<a href="cooindexStd" class="btn btn-dark" style="float: right;">Student Schedule</a>
 	<br><br>
 	<table class="table">
 			<tr class="table-dark">
