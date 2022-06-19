@@ -236,7 +236,6 @@ INSERT INTO `reports` (`Student_ID`, `userID`, `Date`, `Time`, `Title`, `Descrip
 
 CREATE TABLE `rubrics` (
   `rubricID` varchar(20) NOT NULL,
-  `userID` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `rubricInfo` varchar(255) NOT NULL,
   `rubricMark` int(11) NOT NULL,
   `coordinator_ID` varchar(255) NOT NULL,

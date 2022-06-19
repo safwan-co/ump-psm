@@ -114,11 +114,25 @@ Route::get('AddEvaluation', [EvaluationController::class, 'EvaluationInterface']
 Route::post('Evaluation', 'EvaluationController@addEvaluation');
 
 //Rubric
-use App\Http\Controllers\RubricController;
 
-Route::get('AddRubric', [RubricController::class, 'RubricInterface']);//student add meeting booking
 
-Route::post('Rubric', 'RubricController@addRubric');
+
+Route::get('AddRubric', 'RubricController@abc');
+
+Route::get('rbinsert', function () {
+    return view('Rubric.insert');
+});
+
+Route::post('create','RubricController@create');
+
+Route::get('/rubricdata/{{rubricID}}/delete','RubricController@delete');
+
+Route::get('edit-records','RubricController@index');
+Route::get('edit/{id}','RubricController@show');
+Route::post('edit/{id}','SRubricController@edit');
+
+
+
 
 //! Schedule
 use App\Http\Controllers\ScheduleController;

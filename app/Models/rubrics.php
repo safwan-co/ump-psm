@@ -11,7 +11,7 @@ class rubrics extends Model
 
     public $timestamps = false;
     protected $fillable = [
-        'rubricID', 'userID', 'rubricInfo','rubricMark', 'coordinator_ID', 'coordinatorName', 'date', 'time'
+        'rubricID', 'rubricInfo','rubricMark', 'date', 'time'
     ];
     
 }

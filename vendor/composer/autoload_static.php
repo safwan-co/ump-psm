@@ -563,7 +563,6 @@ class ComposerStaticInit35045b5e2c527a3147113af813f04e2f
         'App\\Models\\rankings' => __DIR__ . '/../..' . '/app/Models/rankings.php',
         'App\\Models\\reports' => __DIR__ . '/../..' . '/app/Models/reports.php',
         'App\\Models\\rubrics' => __DIR__ . '/../..' . '/app/Models/rubrics.php',
-        'App\\Models\\schedule' => __DIR__ . '/../..' . '/app/Models/schedule.php',
         'App\\Models\\students' => __DIR__ . '/../..' . '/app/Models/students.php',
         'App\\Models\\supervisors' => __DIR__ . '/../..' . '/app/Models/supervisors.php',
         'App\\Models\\users' => __DIR__ . '/../..' . '/app/Models/users.php',
