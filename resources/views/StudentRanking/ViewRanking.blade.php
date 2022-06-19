@@ -1,4 +1,4 @@
-<?php
+<<?php
 
 $logged_user = session()->get('logged_user');
 $user_name = session()->get('name');
@@ -8,6 +8,14 @@ $roles = session()->get('user_type');
 
 // var_dump($all);
 ?>
+?>
+<style>
+	table.center{
+		margin-left :auto;
+		margin-right :auto;
+	}
+	}
+</style>
 <x-header-new />
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -17,7 +25,7 @@ $roles = session()->get('user_type');
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0 text-dark">Supervisor</h1>
+          <h1 class="m-0 text-dark">Student Ranking</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -59,42 +67,38 @@ $roles = session()->get('user_type');
 			</style>
 		 </style>
   <center>
-			 <h1 style="text-align: center;">MEETING LIST</h1>
-        </br>
-        <button><a href="RetriveMeeting" >View Meeting<class="nav-link  @if(url()->current() ===  URL::to('/RetriveMeeting'))
-	    	active
-		    @endif">
+			 <h1 style="text-align: center;">RANKING LIST</h1>
+       </br>
+		<button><a href="AddRanking" >Add Ranking<class="nav-link  @if(url()->current() ===  URL::to('/AddRanking'))
+		active
+		@endif">
 		</a></button>
-    <button><a href="AddMeetingStatus" >Add Meeting Status<class="nav-link  @if(url()->current() ===  URL::to('/AddMeetingStatus'))
-	    	active
-		    @endif">
+		<button><a href="ViewRanking" >View Ranking<class="nav-link  @if(url()->current() ===  URL::to('/ViewRanking'))
+		active
+		@endif">
 		</a></button>
-    <button><a href="EditMeetingBooking" >Edit Meeting Status<class="nav-link  @if(url()->current() ===  URL::to('/EditMeetingBooking'))
-	    	active
-		    @endif">
-		</a></button>
+		
   </center>
 			<center><table>
 			<tr class="center">
 				<br><br>
-        <th>Meeting ID</th>
 				<th>Student ID</th>
-				<th>Date Booking</th>
-				<th>Start Time</th>
-				<th>End Time</th>
-				<th>Purpose</th>
-				<th>Status</th>
-				<th>Comment</th>	
-			</tr>
-      
-      @foreach ($meetingsv as $data)
-      <tr>
-            <td>:&nbsp&nbsp{{$data->userID}}</td>
-            <td>:&nbsp&nbsp{{$data->Meeting_Status}}</td>
-            <td>:&nbsp&nbsp{{$data->Meeting_Comment}}</td>
-      </tr>
+				<th>Student Grade</th>
+				<th>Student Ranking</th>
+                <th>Action</th>	
+			</tr> 
+      @foreach ($rankings as $data)
+   <tr>
+            <td>&nbsp&nbsp{{$data->Student_ID}}</td>
+            <td>&nbsp&nbsp{{$data->student_grade}}</td>
+            <td>&nbsp&nbsp{{$data->student_ranking}}</td>
+			<td><a href='RetriveRanking/{{$data->id}}' class='btn btn-success'>Edit</a> <td>
+
+    </tr>
      @endforeach
       
+        
+
 		</table></center>
   <!-- /.content -->
 

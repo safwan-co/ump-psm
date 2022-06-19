@@ -23,17 +23,17 @@ class StudentRankingController extends Controller
     function addRanking(Request $req) //student add reports
     {
         $Student_ID = $req->input('Student_ID');
-        $student_grade = $req->input('student_grade');
-        $student_ranking = $req->input('student_ranking');
+        $student_grade = $req->input('Student_Grade');
+        $student_ranking = $req->input('Student_Ranking');
  
         //table meetings
         $rankings = new rankings;
         $rankings->userID = session()->get('logged_user');
         $rankings->Student_ID = $Student_ID;
         $rankings->student_grade = $student_grade;
+        $rankings->student_ranking = $student_ranking;
         $rankings->save();
         return redirect("ViewRanking");
-
     }
     
     function viewRanking() //student view reports
@@ -47,24 +47,33 @@ class StudentRankingController extends Controller
     }
    
 
-    function retriveRanking()  //lecturer view reports list detail
+    function retriveRanking($id)  //lecturer view reports list detail
     {
         
         $USER_ID = session()->get('logged_user');
         $users = DB::table('rankings')
-            ->where('userID', '=', $USER_ID)
+            ->where('id', '=', $id)
             ->get();
-        return View('StudentRanking.RetriveRanking')->with('rankings', $users);
+        return View('StudentRanking.EditRanking')->with('ranking', $users);
          //var_dump($users);
-
-      
     }
-    function editRanking()  //student edit reports
+    function editRanking(Request $req,$id)  //student edit reports
     {
-        return View('StudentRanking.EditRanking'); 
+        $Student_ID = $req->input('Student_ID');
+        $student_grade = $req->input('Student_Grade');
+        $student_ranking = $req->input('Student_Ranking');
+        $rankings = rankings::find($id);
+        $rankings->userID = session()->get('logged_user');
+        $rankings->Student_ID = $Student_ID;
+        $rankings->student_grade = $student_grade;
+        $rankings->student_ranking = $student_ranking;
+        $rankings->update();
+        return redirect('ViewRanking'); 
     }
     
     
     
 }
+
+
 

@@ -17,7 +17,7 @@ $roles = session()->get('user_type');
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Supervisor Profile</h1>
+                 
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -30,16 +30,24 @@ $roles = session()->get('user_type');
     </div>
     <!-- /.content-header -->
 
-    <!-- Main content -->
+   <!-- Main content -->
+  <center>
     <div class="content">
         <div class="container">
-            <table style="width:100%">
-                <tr>
-                    <td width="30%" class="topleft"><img src="https://avatars.dicebear.com/api/initials/:{{$user_name}}.svg" width="200" height="180">
-                        <h2><br></h2>
-                        <h4></h4>
-                    </td>
-                    <td width="20%">
+        <table style="width:100%">
+        <tr>
+        <center><h1>Supervisor Profile</h1></center>
+        <fieldset>
+          <br>
+          <br>
+			 <table class="center">
+         <center><img src="https://avatars.dicebear.com/api/initials/:{{$user_name}}.svg" width="200" height="180">
+            <h2><br></h2>
+          </td></td>
+</tr>
+<br>
+</td>
+                    <td>
                         <h2>Name</h2>
                         <h2>Supervisor ID</h2>
                         <h2>Faculty</h2>
@@ -47,8 +55,11 @@ $roles = session()->get('user_type');
                         <h2>Office</h2>
                         <h2>Phone Number</h2>
                         <h2>Email</h2>
+                        <h2>Students Name</h2>
+
+
                     </td>
-                    <td width="50%">
+                    <td>
                         <h3>:&nbsp&nbsp{{$supervisors[0]->name}}</h3>
                         <h3>:&nbsp&nbsp{{$supervisors[0]->userID}}</h3>
                         <h3>:&nbsp&nbsp{{$supervisors[0]->faculty}}</h3>
@@ -56,16 +67,17 @@ $roles = session()->get('user_type');
                         <h3>:&nbsp&nbsp{{$supervisors[0]->office}}</h3>
                         <h3>:&nbsp&nbsp{{$supervisors[0]->phone}}</h3>
                         <h3>:&nbsp&nbsp{{$supervisors[0]->email}}</h3>
+                        <h3>:&nbsp&nbsp{{$supervisors[0]->std_name}}</h3>
                     </td>
                 </tr>
-            </table>
-            <h2><br></h2>
-            <h2><br></h2>
-            <a class="button-73" role="button" href="SVedit">Edit Profile</a>
-            <h2><br></h2>
-        </div><!-- /.container -->
-    </div>
-    <!-- /.content -->
+      </table>
+      <h2><br></h2>
+      <h2><br></h2>
+      <center><a class="btn btn-success" role="button" href="SVedit">Edit Profile</a>
+      <h2><br></h2>
+    </div><!-- /.container -->
+  </div>
+  <!-- /.content -->
 
 </div>
 <!-- ./wrapper -->

@@ -24,7 +24,8 @@ class ReportController extends Controller
     
     function addReport(Request $req) //student add reports
     {
-        $Student_ID = $req->input('Student_ID');
+        $id = $req->input('id');
+        $sv = $req->input('sv');
         $Date = $req->input('Date');
         $Time = $req->input('Time');
         $Title = $req->input('Title');
@@ -33,7 +34,8 @@ class ReportController extends Controller
         //table meetings
         $reports = new reports;
         $reports->userID = session()->get('logged_user');
-        $reports->Student_ID = $Student_ID;
+        $reports->id = $id;
+        $reports->sv = $sv;
         $reports->Date = $Date;
         $reports->Time = $Time;
         $reports->Title = $Title;
@@ -53,8 +55,18 @@ class ReportController extends Controller
          //var_dump($users);
     }
    
+    function viewReportSV() //SV view reports
+    {
+        $USER_ID = session()->get('logged_user');
+        $users = DB::table('reports')
+            ->where('sv', '=', $USER_ID)
+            ->get();
+        return View('GenerateReport.ViewReportSV')->with('reports', $users);
+         //var_dump($users);
+    }
+   
 
-    function retriveReport()  //lecturer view reports list detail
+    function retriveReport() 
     {
         
         $USER_ID = session()->get('logged_user');
@@ -71,7 +83,52 @@ class ReportController extends Controller
         return View('GenerateReport.EditReport'); 
     }
     
+    function edit_function($id)
+    {
+        $student = DB::select('select * from reports where id = ?', [$id]);          
+        return view('GenerateReport.EditReport',['student'=>$student]);
     
-    
-}
+    }
+    function update_function(Request $req)
+    {
+        $data=reports::find($req->id);
+        $data->id=$req->id;
+        $data->sv=$req->sv;
+        $data->Date=$req->Date;
+        $data->Time=$req->Time;
+        $data->Title=$req->Title;
+        $data->Description=$req->Description;
+        $data->save();
+        return redirect('ViewReport');
+    }
 
+    function SV_View($id)
+    {
+        $student = DB::select('select * from reports where id = ?', [$id]);          
+        return view('GenerateReport.SvReportView',['student'=>$student]);
+    
+    }
+
+    function back()
+    {
+        return redirect('ViewReportSV');
+    }
+
+    function SVList() //student view reports
+    {
+        $USER_ID = session()->get('logged_user');
+        $users = DB::table('users')
+            ->where('user_type', '=', 'Supervisor')
+            ->get();
+        return View('GenerateReport.ViewSVList')->with('users', $users);
+         //var_dump($users);
+    }
+    
+    function delete($id)
+    {
+        $student = DB::delete('delete from reports where id = ?', [$id]);          
+        return redirect('ViewReport');
+    
+    }
+
+}

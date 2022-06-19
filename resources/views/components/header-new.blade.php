@@ -55,10 +55,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 		<!-- /.navbar -->
 
 		<!-- Main Sidebar Container -->
-		<aside class="main-sidebar sidebar-light-blue elevation-5">
+		<aside class="main-sidebar sidebar-light-blue elevation-5 sidebar-dark-">
 			<!-- Brand Logo -->
-			<a class="brand-link" style="text-align: center;">
-				<img class="w-50 h-auto" src="/./images/UMP2.png" alt="UMP" />
+			<a class="brand-link" style="text-align: center;"><br>
+				<img class="w-50 h-auto" src="/./images/UMP2.png" alt="UMP" /><br><br>
 			</a>
 
 			<!-- Sidebar -->
@@ -70,7 +70,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 					</div>
 					<div class="info">
 
-						<span>{{$user_name}}</span>
+						<span style="color: white;">{{$user_name}}</span>
 					</div>
 				</div>
 
@@ -187,7 +187,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 							<ul class="nav nav-treeview  ">
 								<li class="nav-item ">
-									<a href="AddReport" class="nav-link  @if(url()->current() ===  URL::to('/AddReport'))
+									<a href="ViewReportSV" class="nav-link  @if(url()->current() ===  URL::to('/ViewReportSV'))
 								active
 								@endif">
 										<p>Report</p>
@@ -263,16 +263,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 							</a>
 
 							<ul class="nav nav-treeview  ">
-								<li class="nav-item ">
-									<a href="AddReport" class="nav-link  @if(url()->current() ===  URL::to('/AddReport'))
-								active
-								@endif">
-										<p>Report</p>
-									</a>
-								</li>
 
 								<li class="nav-item">
-								     <a href="AddRanking" class="nav-link  @if(url()->current() ===  URL::to('/AddRanking'))
+								     <a href="ViewReportCV" class="nav-link  @if(url()->current() ===  URL::to('/ViewReportCV'))
 									 active
 								@endif">
 										<p>Student Ranking</p>

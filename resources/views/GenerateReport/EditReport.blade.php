@@ -1,13 +1,6 @@
-<?php
 
-$logged_user = session()->get('logged_user');
-$user_name = session()->get('name');
-$roles = session()->get('user_type');
-// $all = session()->all();
 
-// var_dump($all);
-?>
-<x-header-new/>
+<x-header-new />
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 
@@ -33,23 +26,46 @@ $roles = session()->get('user_type');
     <div class="container">
       <table style="width:100%">
         <tr>
-			 <h1 style="text-align: center;">Student Progress Form</h1>
-        </br>
-
-        <fieldset>
+			 <h1 style="text-align: center;">Edit Report</h1>
+       <br>
+		</a></button>
+	<fieldset>
 		     <br>
-
 			 <table class="center">
-				<form action="GenerateReport" method="POST" >
+				<form action="/update" method="POST">
                 @csrf
-				
+				<center>
 				<td><td>
 					<p>
 					<td>
-					<label for=id>Report ID:</label>
+					<label for="id">Report ID:</label>
 					</td>
 					<td>
-					<input type="text" name="id" placeholder="Student ID_Report No">E.g: CBXXXXX_1
+					<input type="text" class="form-control" name="id" id="name" value="{{ $student[0]->id }}" readonly> 
+					<td>
+					</p>
+				</td>
+                </tr>
+
+				<td><td>
+					<p>
+					<td>
+					<label for="sv">Supervisor:</label>
+					</td>
+					<td>
+					<input type="text" class="form-control" name="sv" id="sv" value="{{ $student[0]->sv }}">  
+					</td>
+					</p>
+				</td>
+				</tr>
+			
+				<td><td>
+					<p>
+					<td>
+					<label for="Date">Date:</label>
+					</td>
+					<td>
+					<input type="date" class="form-control" name="Date" id="date" value="{{ $student[0]->Date }}">  
 					</td>
 					</p>
 				</td>
@@ -58,37 +74,10 @@ $roles = session()->get('user_type');
 				<td><td>
 					<p>
 					<td>
-					<label for=id>Supervisor ID:</label>
+					<label for="Time">Time:</label>
 					</td>
 					<td>
-					<input type="text" name="sv"><a href="ViewSVList">click here<class="nav-link  @if(url()->current() ===  URL::to('/ViewSVList'))
-		              active
-		             @endif">
-		              </a>
-					</td>
-					</p>
-				</td>
-				</tr>
-
-				<td><td>
-					<p>
-					<td>
-					<label for=Date>Date:</label>
-					</td>
-					<td>
-					<input type="date" name="Date">
-					</td>
-					</p>
-				</td>
-				</tr>
-
-				<td><td>
-					<p>
-					<td>
-					<label for=Time>Time:</label>
-					</td>
-					<td>
-					<input type="time" name="Time">
+					<input type="time" class="form-control" name="Time" id="time" value="{{ $student[0]->Time }}" >  
 					</td>
 					</p>
 				</td>
@@ -100,35 +89,30 @@ $roles = session()->get('user_type');
 					<label for="Title">Title:</label>
 					</td>
 					<td>
-					<input type="text" name="Title"> 
+					<input type="text" class="form-control" name="Title" id="title" value="{{ $student[0]->Title }}" >  
 					</td>
 					</p>
 				</td>
 				</tr>
 
-				<td><td>
+                <td><td>
 					<p>
 					<td>
 					<label for="Description">Description:</label>
 					</td>
 					<td>
-					<input type="text" name="Description" style="width: 300px; height:150px;"> 
+					<input type="text" class="form-control" name="Description" id="description" value="{{ $student[0]->Description }}" style="width: 300px; height:150px;"> 
 					</td>
 					</p>
 				</td>
 				</tr>
 			</table>
-			<br>
-			<input type="submit" class="btn btn-success" name="Submit" id="Submit" value="Submit" method="post">
-			<a href="ViewReport" class="btn btn-success">View Report<class="nav-link  @if(url()->current() ===  URL::to('/ViewReport'))
-		active
-		@endif">
-		</a>
+				<br>
+			<input class="btn btn-success" type="submit" name="Submit" id="Submit" value="Save" method="post">
 			</p>
 			</form>
 		</fieldset>
-</table>
-</center>
+</table></center>
     </div><!-- /.container -->
   </div>
   <!-- /.content -->

@@ -36,29 +36,24 @@ $roles = session()->get('user_type');
 			<tr class="center">
 				<br><br>
 				<th>Report ID</th>
-        <th>Supervisor</th>
+        <th>Student ID</th>
 				<th>Date</th>
 				<th>Time</th>
 				<th>Title</th>
-        <th>Description</th>
 				<th>Action</th>
 			</tr> 
       @foreach ($reports as $data)
    <tr>
             <td>&nbsp&nbsp{{$data->id}}</td>
-            <td>&nbsp&nbsp{{$data->sv}}</td>
+            <td>&nbsp&nbsp{{$data->userID}}</td>
             <td>&nbsp&nbsp{{$data->Date}}</td>
             <td>&nbsp&nbsp{{$data->Time}}</td>
             <td>&nbsp&nbsp{{$data->Title}}</td>
-            <td>&nbsp&nbsp{{$data->Description}}</td>
-			<td><a href="click_edit/{{$data->id}}" class="btn btn-success">Edit</a><a href="click_delete/{{$data->id}}" class="btn btn-danger">Delete</a></td>
+			<td><a href="click_view/{{$data->id}}" class="btn btn-success">View</a></td>
     </tr>
      @endforeach
 		</table><br>
-    <a href="AddReport" class="btn btn-success">Add Student Progress<class="nav-link  @if(url()->current() ===  URL::to('/AddReport'))
-	active
-    @endif">
-		</a></center>
+</center>
   <!-- /.content -->
 
 </div>

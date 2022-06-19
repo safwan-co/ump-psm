@@ -38,11 +38,45 @@ $roles = session()->get('user_type');
   <div class="content">
     <div class="container">
 	<h1 style="text-align: center;">Schedule</h1>
-    <form class="form-group" action="">
+    <form class="form-group" action="" style="text-align: center;">
       {{@csrf_field()}}
-      <label for="userid">User ID</label>
-      <input name="userID" id="userID" type="text"> <br>
-      <input type="submit" value="Save">
+      <table class="table">
+        <tr>
+          <td>
+            <label for="userid">User ID</label>
+          </td>
+          <td>
+            <input class="form-group" name="userID" id="userID" type="text" value="" placeholder="">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="psm_type">User Type</label>
+          </td>
+          <td>
+            <input class="form-group" name="psm_type" id="psm_type" type="text" list="psmtype" value="PSM">
+            <datalist id="psmtype">
+              <option>PSM</option>
+              <option>Supervisor</option>
+              <option>Coordinator</option>
+            </datalist>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="userid">User ID</label>
+          </td>
+          <td>
+            <input class="form-group" name="userID" id="userID" type="text" value="" placeholder="User ID">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="submit" class="btn btn-primary" value="Save">
+
+          </td>
+        </tr>
+      </table>
     </form>
 
     </div><!-- /.container -->

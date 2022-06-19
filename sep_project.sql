@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2022 at 06:13 PM
+-- Generation Time: Jun 09, 2022 at 03:40 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.5
 
@@ -55,32 +55,6 @@ CREATE TABLE `evaluations` (
   `psm1_mark` double NOT NULL,
   `psm2_mark` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `meetings`
---
-
-CREATE TABLE `meetings` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `userID` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Meeting_Date` date NOT NULL,
-  `Meeting_Start` time NOT NULL,
-  `Meeting_End` time NOT NULL,
-  `Meeting_Purpose` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `meetings`
---
-
-INSERT INTO `meetings` (`id`, `userID`, `Meeting_Date`, `Meeting_Start`, `Meeting_End`, `Meeting_Purpose`, `created_at`, `updated_at`) VALUES
-(1, 'abu999', '2022-01-03', '16:08:00', '20:06:00', 'saja saja', '2022-01-19 00:06:07', '2022-01-19 00:06:07'),
-(2, 'CB19100', '2022-01-03', '17:48:00', '19:45:00', 'saja saja', '2022-01-19 01:45:44', '2022-01-19 01:45:44'),
-(3, 'abu999', '2022-06-21', '07:43:00', '10:41:00', 'dwfewf', '2022-06-06 15:41:20', '2022-06-06 15:41:20');
 
 -- --------------------------------------------------------
 
@@ -148,38 +122,13 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `psmlec`
---
-
-CREATE TABLE `psmlec` (
-  `psm_lec` int(5) NOT NULL,
-  `psm_id` int(5) NOT NULL,
-  `psm_sid` int(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `psmstd`
---
-
-CREATE TABLE `psmstd` (
-  `psm_stdid` int(5) NOT NULL,
-  `psm_id` int(5) NOT NULL,
-  `psm_sid` int(5) NOT NULL,
-  `psm_snum` int(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `psmuser`
 --
 
 CREATE TABLE `psmuser` (
   `psm_id` int(5) NOT NULL,
-  `userID` char(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `psm_type` char(5) NOT NULL,
+  `userID` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `psm_type` varchar(12) NOT NULL,
   `psm_sid` varchar(10) NOT NULL,
   `psm_snum` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -189,9 +138,12 @@ CREATE TABLE `psmuser` (
 --
 
 INSERT INTO `psmuser` (`psm_id`, `userID`, `psm_type`, `psm_sid`, `psm_snum`) VALUES
-(1, 'CB19107', 'std', '202122', '1'),
-(2, 'CB19111', 'std', '202122', '2'),
-(3, 'CB19102', 'lec', '202122', '1');
+(1, 'CB19107', 'Student', '202122', '1'),
+(2, 'fakhirah123', 'Coordinator', '202122', '2'),
+(3, 'SV001', 'Supervisor', '202122', '1'),
+(4, 'SV002', 'Supervisor', '202122', '2'),
+(5, 'SV003', 'Supervisor', '202122', '2'),
+(6, 'CB19102', 'Coordinator', '202122', '2');
 
 -- --------------------------------------------------------
 
@@ -213,20 +165,14 @@ CREATE TABLE `rankings` (
 --
 
 CREATE TABLE `reports` (
-  `Student_ID` char(36) NOT NULL,
+  `id` char(36) NOT NULL,
   `userID` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sv` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `Date` date NOT NULL,
   `Time` time NOT NULL,
   `Title` varchar(255) NOT NULL,
   `Description` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `reports`
---
-
-INSERT INTO `reports` (`Student_ID`, `userID`, `Date`, `Time`, `Title`, `Description`) VALUES
-('ffsfafsa', 'abu999', '2022-06-15', '08:02:00', 'adada', 'adad');
 
 -- --------------------------------------------------------
 
@@ -242,18 +188,6 @@ CREATE TABLE `rubrics` (
   `coordinatorName` varchar(255) NOT NULL,
   `date` date NOT NULL,
   `time` time NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `schedules`
---
-
-CREATE TABLE `schedules` (
-  `psm_sid` int(5) NOT NULL,
-  `psm_year` char(4) NOT NULL,
-  `psm_sem` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -281,7 +215,7 @@ CREATE TABLE `students` (
 
 INSERT INTO `students` (`id`, `faculty`, `course`, `sem_year`, `address`, `psm_title`, `userID`, `sv_name`, `created_at`, `updated_at`) VALUES
 (4, 'fkomik', 'software', 'sem 3, year 2', 'No 363, Jalan Andalas 5/2, Taman Andalas 71700 Mantin, Negeri Sembilan', NULL, 'abu999', NULL, '2022-04-10 08:43:33', '2022-06-06 11:03:07'),
-(5, NULL, NULL, NULL, NULL, NULL, 'CB19107', NULL, '2022-06-07 03:14:05', '2022-06-07 03:14:05');
+(5, 'FKOM', NULL, NULL, NULL, NULL, 'CB19107', NULL, '2022-06-07 03:14:05', '2022-06-08 07:35:42');
 
 -- --------------------------------------------------------
 
@@ -305,7 +239,10 @@ CREATE TABLE `supervisors` (
 --
 
 INSERT INTO `supervisors` (`id`, `faculty`, `expertise`, `office`, `userID`, `std_name`, `created_at`, `updated_at`) VALUES
-(3, NULL, NULL, NULL, 'sv789', NULL, '2022-04-10 08:45:40', '2022-04-10 08:45:40');
+(3, NULL, NULL, NULL, 'sv789', NULL, '2022-04-10 08:45:40', '2022-04-10 08:45:40'),
+(4, NULL, NULL, NULL, 'SV001', NULL, '2022-06-08 12:58:18', '2022-06-08 12:58:18'),
+(5, NULL, NULL, NULL, 'SV002', NULL, '2022-06-09 01:14:58', '2022-06-09 01:14:58'),
+(6, NULL, NULL, NULL, 'SV003', NULL, '2022-06-09 03:07:28', '2022-06-09 03:07:28');
 
 -- --------------------------------------------------------
 
@@ -333,8 +270,10 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `user_type`, `password`, `name`, `userID`, `phone`, `email`, `remember_token`, `created_at`, `updated_at`) VALUES
 (16, 'Student', 'abc123', 'Safwan', 'CB19107', '0192217361', 'safwan99@gmail.com', NULL, '2022-06-07 03:14:05', '2022-06-07 03:14:05'),
 (17, 'Coordinator', 'abc123', 'Fakhirah', 'fakhirah123', '01753715471', 'fakhira123@gmail.com', NULL, '2022-06-07 04:07:39', '2022-06-07 04:07:39'),
-(18, 'Coordinator', 'abc123', 'Darwish Mat Zain', 'CB19102', '0179024771', 'cb19102@student.ump.edu.my', '', NULL, NULL),
-(19, 'Student', 'abc123', 'Hidari Kazumi', 'CB19111', '0179897788', 'CB19111', NULL, NULL, NULL);
+(18, 'Supervisor', 'abc123', 'Sir Hafiz', 'SV001', '017566217', 'hafiz@gmail.com', NULL, '2022-06-08 12:58:17', '2022-06-08 12:58:17'),
+(19, 'Supervisor', 'abc123', 'Madam Shamsiah', 'SV002', '017672617518', 'shamsiah123@gmail.com', NULL, '2022-06-09 01:14:58', '2022-06-09 01:14:58'),
+(20, 'Supervisor', 'abc123', 'Sir Fahmi', 'SV003', '0177316171', 'fahmi123@gmail.com', NULL, '2022-06-09 03:07:28', '2022-06-09 03:07:28'),
+(21, 'Coordinator', 'abc123', 'Darwish ', 'CB19102', '0179024771', 'cb19102@student.ump.edu.my', NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -344,12 +283,6 @@ INSERT INTO `users` (`id`, `user_type`, `password`, `name`, `userID`, `phone`, `
 -- Indexes for table `coordinators`
 --
 ALTER TABLE `coordinators`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `meetings`
---
-ALTER TABLE `meetings`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -410,12 +343,6 @@ ALTER TABLE `coordinators`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `meetings`
---
-ALTER TABLE `meetings`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
@@ -431,7 +358,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `psmuser`
 --
 ALTER TABLE `psmuser`
-  MODIFY `psm_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `psm_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `students`
@@ -443,13 +370,13 @@ ALTER TABLE `students`
 -- AUTO_INCREMENT for table `supervisors`
 --
 ALTER TABLE `supervisors`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Constraints for dumped tables

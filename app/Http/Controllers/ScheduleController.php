@@ -25,7 +25,6 @@ class ScheduleController extends Controller
         $psm_year = $req->input('psm_year');
         $psm_sem = $req->input('psm_sem');
 
- 
         $psmuser = new evaluations;
         $psmuser->userID = session()->get('logged_user');
         $psmuser->psm_sid = $psm_sid;
@@ -35,7 +34,7 @@ class ScheduleController extends Controller
         return redirect("ViewSchedule");
 
     }
-    
+
     function viewSchedule() //student view reports
     {
         $USER_ID = session()->get('logged_user');
@@ -45,30 +44,43 @@ class ScheduleController extends Controller
         return View('Schedule.ViewSchedule')->with('psmuser', $users);
          //var_dump($users);
     }
-   
 
     function retriveSchedule()  //lecturer view reports list detail
     {
-        
         $USER_ID = session()->get('logged_user');
         $users = DB::table('psmuser')
             ->where('userID', '=', $USER_ID)
             ->get();
         return View('Schedule.RetriveSchedule')->with('psmuser', $users);
          //var_dump($users);
-
-      
     }
     function editSchedule()  //student edit reports
     {
-        return View('Schedule.EditSchedule'); 
+        return View('Schedule.EditSchedule');
+    }
+    //! Darwish
+    public function addPSM(){
+        return view('Schedule.AddSchedule');
+    }
+    public function personalStudent(){
+        $uid = session()->get('logged_user');
+        //$users = DB::select('select * from psmuser WHERE userID LIKE'+ $uid);
+        $users = DB::table('psmuser')
+            ->where('userID', '=', $uid)
+            ->get();
+        return view('Schedule.viewStdSchedule',['psmuser'=>$users]);
+    }
+
+    public function superStudent(){
+        $users = DB::select('select * from psmuser WHERE psm_type = "Student" ORDER BY psm_sid ASC');
+        return view('Schedule.viewStdSchedule',['psmuser'=>$users]);
     }
     public function indexStudent(){
-        $users = DB::select('select * from psmuser WHERE userID = $userID ORDER BY psm_sid ASC');
-        return view('Schedule.viewSchedule',['psmuser'=>$users]);
+        $users = DB::select('select * from psmuser WHERE psm_type = "Student" ORDER BY psm_sid ASC');
+        return view('Schedule.viewCooSchedule',['users'=>$users]);
     }
     public static function indexCoordinator(){
-        $users = DB::select('select * from psmuser WHERE psm_type = "lec"');
+        $users = DB::select('select * from psmuser WHERE psm_type = "Coordinator"');
         return view('Schedule.viewCooSchedule',['users'=>$users]);
         //$users = DB::table('psmuser')->where('psm_type', '=', "lec")->get();
         //return View('Schedule.viewCooSchedule')->with('psmuser', ['users'=>$users]);

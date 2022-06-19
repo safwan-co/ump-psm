@@ -1655,6 +1655,21 @@ pre code {
         margin-left: 91.666667%;
     }
 }
+.table09{
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 60%;
+  }
+  
+.table09 td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+.table09 tr:nth-child(even) {
+    background-color: #dddddd;
+  }
 .table {
     width: 100%;
     margin-bottom: 1rem;
@@ -11035,7 +11050,7 @@ body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini)
 .header09 {
     padding: 45px;
     text-align: center;
-    background: #87CEEB;
+    background: #5499C7;
     color: white;
     border: 1px solid #000000;
     font-size: 25px;

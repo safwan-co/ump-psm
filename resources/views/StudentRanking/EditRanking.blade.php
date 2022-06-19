@@ -1,16 +1,8 @@
-<?php
-
-$logged_user = session()->get('logged_user');
-$user_name = session()->get('name');
-$roles = session()->get('user_type');
-// $all = session()->all();
-
-// var_dump($all);
-?>
 <style>
 table.center {
     margin-left: auto;
     margin-right: auto;
+}
 }
 </style>
 <x-header-new />
@@ -22,7 +14,7 @@ table.center {
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                <h1 class="m-0 text-dark">Student Ranking</h1>
+                    <h1 class="m-0 text-dark">Student Ranking</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -38,6 +30,9 @@ table.center {
     <!-- Main content -->
     <div class="content">
         <div class="container">
+        @if (session('status'))
+                <h6 class="alert alert-success">{{ session('status') }}</h6>
+            @endif
             <table style="width:100%">
                 <tr>
                     <center>
@@ -60,8 +55,9 @@ table.center {
                             <br>
 
                             <table class="center">
-                                <form action="StudentRanking" method="POST">
+                                <form action="{{ url ('EditRanking/'.$ranking[0]->id) }}" method="POST">
                                     @csrf
+                                    @method('PUT')
                                     <center>
 
                                         <td>
@@ -71,7 +67,7 @@ table.center {
                                             <label for=Student_ID>Student ID:</label>
                                         </td>
                                         <td>
-                                            <input type="text" name="Student_ID">
+                                            <input type="text" name="Student_ID" value="{{$ranking[0]->Student_ID}}">
                                         </td>
                                         </p>
                                         </td>
@@ -84,7 +80,7 @@ table.center {
                     <label for=Student_Grade>Student Grade:</label>
                 </td>
                 <td>
-                    <input type="text" name="Student_Grade">
+                    <input type="text" name="Student_Grade" value="{{$ranking[0]->student_grade}}">
                 </td>
                 </p>
                 </td>
@@ -97,18 +93,18 @@ table.center {
                     <label for=Student_Ranking>Student Ranking:</label>
                 </td>
                 <td>
-                    <input type="text" name="Student_Ranking">
+                    <input type="text" name="Student_Ranking" value="{{$ranking[0]->student_ranking}}">
                 </td>
                 </p>
                 </td>
                 </tr>
 
                 <td>
-                </tr>
+                    </tr>
             </table>
             <br>
             <center>
-                <input type="submit" name="Submit" id="Submit" value="Submit" method="post">
+                <input type="submit" name="Submit" id="Submit" value="Edit Ranking" method="post">
             </center>
             </p>
             </form>

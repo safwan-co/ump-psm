@@ -39,19 +39,12 @@ table.center{
     <?php $psmsession = 1;?>
     @foreach($psmuser as $user)
     <table class="table table-striped">
-      <?php
-      $psmsession++;
-      $currentID=$user->userID;
-      echo $currentID;
-      //if($currentID == $userID)
-      //{
-      ?>
       <tr>
         <td colspan="2" style="text-align: center" class="table-dark">{{$user->userID}}</td>
       </tr>
-      <tr>
-        <td colspan="2" style="text-align: center" class="table-light">{{$user_name}}</td>
-      </tr>
+      <!--
+      <tr><td colspan="2" style="text-align: center" class="table-light">{{$user_name}}</td></tr>
+      -->
       <tr>
         <td>PSM ID</td>
         <td>{{$user->psm_id}}</td>
