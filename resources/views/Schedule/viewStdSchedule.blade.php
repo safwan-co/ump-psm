@@ -34,34 +34,26 @@ table.center{
   <!-- Main content -->
 <div class="content">
   <div class="container">
-    <h1 style="text-align: center;">View Schedule</h1>
-    @if($roles == 'Student')
+    <h1 style="text-align: center;">Student</h1>
+    @if($roles == 'Supervisor'|| $roles == 'Coordinator')
     <?php $psmsession = 1;?>
-    @foreach($psmuser as $user)
     <table class="table table-striped">
       <tr>
-        <td colspan="2" style="text-align: center" class="table-dark">{{$user->userID}}</td>
-      </tr>
-      <!--
-      <tr><td colspan="2" style="text-align: center" class="table-light">{{$user_name}}</td></tr>
-      -->
-      <tr>
         <td>PSM ID</td>
-        <td>{{$user->psm_id}}</td>
-      </tr>
-      <tr>
+        <td>User ID</td>
         <td>PSM Year</td>
-        <td>{{$user->psm_sid}}</td>
-      </tr>
-      <tr>
         <td>Session</td>
-        <td>{{$user->psm_snum}}</td>
       </tr>
-      <?php
-      //}
-      ?>
-    </table>
+    @foreach($st_i as $std)
+      <tr>
+        <td>{{$std->psm_id}}</td>
+        <td>{{$std->userID}}</td>
+        <td>{{$std->psm_sid}}</td>
+        <td>{{$std->psm_snum}}</td>
+      </tr>
     @endforeach
+
+    </table>
     @endif
   </div><!-- /.container -->
 </div>
