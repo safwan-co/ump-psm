@@ -83,9 +83,9 @@ Route::post('CO_update', 'coordinatorController@update_profile');
 use App\Http\Controllers\ReportController;
 
 Route::get('AddReport', [ReportController::class, 'ReportInterface']);
-Route::get('ViewReport', [ReportController::class, 'viewReport']); 
-Route::get('ViewReportSV', [ReportController::class, 'viewReportSV']); 
-Route::get('ViewSVList', [ReportController::class, 'SVList']); 
+Route::get('ViewReport', [ReportController::class, 'viewReport']);
+Route::get('ViewReportSV', [ReportController::class, 'viewReportSV']);
+Route::get('ViewSVList', [ReportController::class, 'SVList']);
 Route::post('GenerateReport', 'ReportController@addReport');
 Route::get('click_edit/{id}','ReportController@edit_function');
 Route::get('click_delete/{id}','ReportController@delete');
@@ -139,10 +139,12 @@ use App\Http\Controllers\ScheduleController;
 //Route::get('viewSchedule', [ScheduleController::class, 'viewSchedule']);//
 //Route::get('viewStd','ScheduleController@indexStudent');
 //Route::get('viewCoo','ScheduleController@indexCoordinator');
-Route::get('viewSchedule', 'ScheduleController@viewSchedule');//student
-Route::get('viewstdSchedule', 'ScheduleController@viewstdSchedule');//student
-
-Route::get('addPSM', 'ScheduleController@addPSM');//coordinator
+Route::get('/viewSchedule', 'ScheduleController@viewSchedule');//student
+Route::get('/viewstdSchedule', 'ScheduleController@viewstdSchedule');//student
+Route::get('/edituserSchedule/{psm_id}', 'ScheduleController@edituserSchedule');
+Route::get('/updateuserSchedule', 'ScheduleController@updateuserSchedule');
+//Route::get('/edituserSchedule/{psm_id}', 'ScheduleController@deleteuserSchedule');
+Route::get('/addPSM', 'ScheduleController@addPSM');//coordinator
 
 
 //Route::get('viewCooSchedule', function(){return view('Schedule/viewCooSchedule');});

@@ -76,6 +76,22 @@ class ScheduleController extends Controller
         $student_i = DB::select('SELECT * FROM psmuser WHERE psm_type = "Student" ORDER BY psm_sid ASC');
         return view('Schedule.viewstdSchedule',['st_i'=>$student_i]);
     }
+    public function edituserSchedule($psm_id){
+        $student_e = DB::table('psmuser')->select('*')->where('psm_id','=',$psm_id)->get();
+        return view('Schedule.edituserSchedule',['st_e'=>$student_e]);
+    }
+    public function updateuserSchedule(Request $req){
+        $psm_id = $req ->input('psm_id');
+        $userID = $req ->input('userID');
+        $psm_type = $req ->input('psm_type');
+        $psm_sid = $req ->input('psm_sid');
+        $psm_snum = $req ->input('psm_snum');
+
+        $user_u = DB::table('psmuser')
+        ->where(['psm_id','=',$psm_id])
+        ->update(['userID'=>$userID, 'psm_type'=>$psm_type,'psm_sid'=>$psm_sid,'psm_snum'=>$psm_snum]);
+        return redirect('viewstdSchedule');
+    }
 
 }
 

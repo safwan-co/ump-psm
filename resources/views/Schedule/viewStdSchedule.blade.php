@@ -36,6 +36,8 @@ table.center{
   <div class="container">
     <h1 style="text-align: center;">Student</h1>
     @if($roles == 'Supervisor'|| $roles == 'Coordinator')
+  	<a href="viewSchedule" class="btn btn-secondary" style="">Back</a><br><br>
+
     <?php $psmsession = 1;?>
     <table class="table table-striped">
       <tr>
@@ -43,6 +45,7 @@ table.center{
         <td>User ID</td>
         <td>PSM Year</td>
         <td>Session</td>
+        <td></td>
       </tr>
     @foreach($st_i as $std)
       <tr>
@@ -50,6 +53,7 @@ table.center{
         <td>{{$std->userID}}</td>
         <td>{{$std->psm_sid}}</td>
         <td>{{$std->psm_snum}}</td>
+        <td><a href="edituserSchedule/{{$std->psm_id}}">edit</a></td>
       </tr>
     @endforeach
 
