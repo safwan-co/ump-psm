@@ -83,9 +83,9 @@ Route::post('CO_update', 'coordinatorController@update_profile');
 use App\Http\Controllers\ReportController;
 
 Route::get('AddReport', [ReportController::class, 'ReportInterface']);
-Route::get('ViewReport', [ReportController::class, 'viewReport']); 
-Route::get('ViewReportSV', [ReportController::class, 'viewReportSV']); 
-Route::get('ViewSVList', [ReportController::class, 'SVList']); 
+Route::get('ViewReport', [ReportController::class, 'viewReport']);
+Route::get('ViewReportSV', [ReportController::class, 'viewReportSV']);
+Route::get('ViewSVList', [ReportController::class, 'SVList']);
 Route::post('GenerateReport', 'ReportController@addReport');
 Route::get('click_edit/{id}','ReportController@edit_function');
 Route::get('click_delete/{id}','ReportController@delete');
@@ -117,11 +117,25 @@ Route::post('onclick_update','EvaluationController@update_evaluation');
 
 
 //Rubric
-use App\Http\Controllers\RubricController;
 
-Route::get('AddRubric', [RubricController::class, 'RubricInterface']);//student add meeting booking
 
-Route::post('Rubric', 'RubricController@addRubric');
+
+Route::get('AddRubric', 'RubricController@abc');
+
+Route::get('rbinsert', function () {
+    return view('Rubric.insert');
+});
+
+Route::post('create','RubricController@create');
+
+Route::get('/rubricdata/{{rubricID}}/delete','RubricController@delete');
+
+Route::get('edit-records','RubricController@index');
+Route::get('edit/{id}','RubricController@show');
+Route::post('edit/{id}','SRubricController@edit');
+
+
+
 
 //! Schedule
 use App\Http\Controllers\ScheduleController;
@@ -131,29 +145,14 @@ use App\Http\Controllers\ScheduleController;
 //Route::get('viewSchedule', [ScheduleController::class, 'viewSchedule']);//
 //Route::get('viewStd','ScheduleController@indexStudent');
 //Route::get('viewCoo','ScheduleController@indexCoordinator');
-Route::get('viewStdSchedule', 'ScheduleController@personalStudent');//student
-Route::get('viewSupSchedule', 'ScheduleController@superStudent');//supervisor
-Route::get('viewCooSchedule', 'ScheduleController@indexCoordinator');//coordinator
-Route::get('addPSM', 'ScheduleController@addPSM');//coordinator
+Route::get('/viewSchedule', 'ScheduleController@viewSchedule');//student
+Route::get('/viewstdSchedule', 'ScheduleController@viewstdSchedule');//student
+Route::get('/edituserSchedule/{psm_id}', 'ScheduleController@edituserSchedule');
+Route::get('/updateuserSchedule', 'ScheduleController@updateuserSchedule');
+//Route::get('/edituserSchedule/{psm_id}', 'ScheduleController@deleteuserSchedule');
+Route::get('/addPSM', 'ScheduleController@addPSM');//coordinator
 
 
 //Route::get('viewCooSchedule', function(){return view('Schedule/viewCooSchedule');});
 //Route::post('indexCoordinator()');
 
-Route::get('Schedule', function(){
-    $logged_user = session()->get('logged_user');
-    $user_type = session()->get('user_type');
-    if ($user_type == 'Student') {return redirect('viewStdSchedule');}
-    elseif ($user_type == 'Supervisor') {return redirect('viewSupSchedule');}
-    elseif ($user_type == 'Coordinator') {return redirect('viewCooSchedule');}
-}
-);
-//Route::get('viewCooSchedule','ScheduleController@indexCoordinator');
-
-/*Route::get('getSchedule', function () {
-
-    $psmuser = DB::table('psmuser')->get();
-
-    return view('getSchedule', ['psmuser' => $psmuser]);
-});*/
-//test

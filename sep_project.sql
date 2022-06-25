@@ -1,21 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2022 at 01:09 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.11
+-- Generation Time: Jun 09, 2022 at 03:40 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `sep_project`
@@ -128,39 +122,28 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `psmlec`
---
-
-CREATE TABLE `psmlec` (
-  `psm_lec` int(5) NOT NULL,
-  `psm_id` int(5) NOT NULL,
-  `psm_sid` int(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `psmstd`
---
-
-CREATE TABLE `psmstd` (
-  `psm_stdid` int(5) NOT NULL,
-  `psm_id` int(5) NOT NULL,
-  `psm_sid` int(5) NOT NULL,
-  `psm_snum` int(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `psmuser`
 --
 
 CREATE TABLE `psmuser` (
   `psm_id` int(5) NOT NULL,
-  `userID` char(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `psm_type` char(5) NOT NULL
+  `userID` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `psm_type` varchar(12) NOT NULL,
+  `psm_sid` varchar(10) NOT NULL,
+  `psm_snum` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `psmuser`
+--
+
+INSERT INTO `psmuser` (`psm_id`, `userID`, `psm_type`, `psm_sid`, `psm_snum`) VALUES
+(1, 'CB19107', 'Student', '202122', '1'),
+(2, 'fakhirah123', 'Coordinator', '202122', '2'),
+(3, 'SV001', 'Supervisor', '202122', '1'),
+(4, 'SV002', 'Supervisor', '202122', '2'),
+(5, 'SV003', 'Supervisor', '202122', '2'),
+(6, 'CB19102', 'Coordinator', '202122', '2');
 
 -- --------------------------------------------------------
 
@@ -199,25 +182,12 @@ CREATE TABLE `reports` (
 
 CREATE TABLE `rubrics` (
   `rubricID` varchar(20) NOT NULL,
-  `userID` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `rubricInfo` varchar(255) NOT NULL,
   `rubricMark` int(11) NOT NULL,
   `coordinator_ID` varchar(255) NOT NULL,
   `coordinatorName` varchar(255) NOT NULL,
   `date` date NOT NULL,
   `time` time NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `schedules`
---
-
-CREATE TABLE `schedules` (
-  `psm_sid` int(5) NOT NULL,
-  `psm_year` char(4) NOT NULL,
-  `psm_sem` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -302,7 +272,8 @@ INSERT INTO `users` (`id`, `user_type`, `password`, `name`, `userID`, `phone`, `
 (17, 'Coordinator', 'abc123', 'Fakhirah', 'fakhirah123', '01753715471', 'fakhira123@gmail.com', NULL, '2022-06-07 04:07:39', '2022-06-07 04:07:39'),
 (18, 'Supervisor', 'abc123', 'Sir Hafiz', 'SV001', '017566217', 'hafiz@gmail.com', NULL, '2022-06-08 12:58:17', '2022-06-08 12:58:17'),
 (19, 'Supervisor', 'abc123', 'Madam Shamsiah', 'SV002', '017672617518', 'shamsiah123@gmail.com', NULL, '2022-06-09 01:14:58', '2022-06-09 01:14:58'),
-(20, 'Supervisor', 'abc123', 'Sir Fahmi', 'SV003', '0177316171', 'fahmi123@gmail.com', NULL, '2022-06-09 03:07:28', '2022-06-09 03:07:28');
+(20, 'Supervisor', 'abc123', 'Sir Fahmi', 'SV003', '0177316171', 'fahmi123@gmail.com', NULL, '2022-06-09 03:07:28', '2022-06-09 03:07:28'),
+(21, 'Coordinator', 'abc123', 'Darwish ', 'CB19102', '0179024771', 'cb19102@student.ump.edu.my', NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -333,6 +304,13 @@ ALTER TABLE `personal_access_tokens`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
+
+--
+-- Indexes for table `psmuser`
+--
+ALTER TABLE `psmuser`
+  ADD PRIMARY KEY (`psm_id`),
+  ADD KEY `userID` (`userID`);
 
 --
 -- Indexes for table `students`
@@ -377,6 +355,12 @@ ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `psmuser`
+--
+ALTER TABLE `psmuser`
+  MODIFY `psm_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
@@ -392,9 +376,15 @@ ALTER TABLE `supervisors`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-COMMIT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `psmuser`
+--
+ALTER TABLE `psmuser`
+  ADD CONSTRAINT `psmuser_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`);
+COMMIT;

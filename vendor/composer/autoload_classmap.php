@@ -38,7 +38,6 @@ return array(
     'App\\Models\\rankings' => $baseDir . '/app/Models/rankings.php',
     'App\\Models\\reports' => $baseDir . '/app/Models/reports.php',
     'App\\Models\\rubrics' => $baseDir . '/app/Models/rubrics.php',
-    'App\\Models\\schedule' => $baseDir . '/app/Models/schedule.php',
     'App\\Models\\students' => $baseDir . '/app/Models/students.php',
     'App\\Models\\supervisors' => $baseDir . '/app/Models/supervisors.php',
     'App\\Models\\users' => $baseDir . '/app/Models/users.php',
