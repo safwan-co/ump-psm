@@ -13,11 +13,9 @@ class EvaluationController extends Controller
     public function EvaluationInterface()
     {
         $USER_ID = session()->get('logged_user');
-        $users = DB::table('users')
-            ->Join('evaluations', 'users.userID', '=', 'evaluations.userID')
-            ->where('users.userID', '=', $USER_ID)
+        $studentevaluations = DB::table('evaluations')
             ->get();
-        return View('Evaluation.AddEvaluation')->with('evaluations', $users);
+        return View('Evaluation.AddEvaluation')->with('studentevaluations', $studentevaluations);
     }
     
     function addEvaluation(Request $req) //student add reports
@@ -33,7 +31,7 @@ class EvaluationController extends Controller
  
         $evaluations = new evaluations;
         $evaluations->userID = session()->get('logged_user');
-        $evaluations->Student_ID = $Student_ID;
+        $evaluations->Student_ID = $student_id;
         $evaluations->student_name = $student_name;
         $evaluations->psm_title= $psm_title;
         $evaluations->psm_type = $psm_type;
@@ -51,7 +49,7 @@ class EvaluationController extends Controller
         $users = DB::table('evaluations')
             ->where('userID', '=', $USER_ID)
             ->get();
-        return View('Evaluation.ViewEvaluation')->with('evaluations', $users);
+        return View('Evaluation.ViewEvaluation')->with('studentevaluations', $users);
          //var_dump($users);
     }
    
@@ -66,7 +64,32 @@ class EvaluationController extends Controller
         return View('Evaluation.RetriveEvaluation')->with('evaluations', $users);
          //var_dump($users);
 
-      
+    function edit_evaluation(Request $student_id)
+    {
+
+        $studentevaluations = DB::table('evaluations')
+            ->where('evaluation.student_id', '=', $student_id)
+            ->get();
+        return View('Evaluation.ViewEvaluation')->with('studentevaluations', $studentevaluations);
+        //$manageevaluation = DB::select('select * from evaluations where student_id = ?', [$student_id]);          
+        //return view('Evaluation.UpdateEvaluation',['manageevaluation'=>$manageevaluation]);
+         
+    }
+
+    function update_evaluation(Request $req)
+    {
+        $evaluations=evaluations::find($req->student_id);
+        $evaluations->student_id=$req->student_id;
+        $evaluations->userID=$req->userID;
+        $evaluations->student_name=$req->student_name;
+        $evaluations->psm_title=$req->psm_title;
+        $evaluations->psm_type=$req->psm_type;
+        $evaluations->supervisor_name=$req->supervisor_name;
+        $evaluations->psm1_mark=$req->psm1_mark;
+        $evaluations->psm2_mark=$req->psm2_mark;
+        $evaluations->save();
+        return redirect('ViewEvaluation');
+    }  
     }
     function editEvaluation()  //student edit reports
     {

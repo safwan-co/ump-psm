@@ -106,9 +106,15 @@ Route::put('EditRanking/{id}' , [StudentRankingController::class, 'editRanking']
 //Evaluation
 use App\Http\Controllers\EvaluationController;
 
-Route::get('AddEvaluation', [EvaluationController::class, 'EvaluationInterface']);//student add meeting booking
+Route::get('AddEvaluation',[EvaluationController::class, 'EvaluationInterface']);//student add meeting booking
 
-Route::post('Evaluation', 'EvaluationController@addEvaluation');
+Route::get('onclick_edit/{student_id}','EvaluationController@edit_evaluation');
+Route::post('UpdateEvaluation', 'EvaluationController@edit_Evaluation');
+Route::post('onclick_update','EvaluationController@update_evaluation');
+
+
+
+
 
 //Rubric
 use App\Http\Controllers\RubricController;
